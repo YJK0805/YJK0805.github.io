@@ -1,0 +1,143 @@
+baseURL = 'https://YJK0805.github.io/'
+languageCode = 'zh-tw'
+title = 'YJK.tw'
+theme = 'PaperMod'
+
+[params]
+# 網站基本資訊
+env = "production"
+description = "專精於漏洞研究、CTF 競賽和資安技術分享的個人部落格"
+keywords = ["資安", "CVE", "CTF", "漏洞分析", "滲透測試", "逆向工程"]
+author = "YJK"
+DateFormat = "2004-08-05"
+
+# 功能設定
+ShowCodeCopyButtons = true
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowRssButtonInSectionTermList = true
+ShowToc = true
+TocOpen = false
+ShowWordCount = true
+ShowSearchPage = true
+
+# 閱讀進度條
+ShowReadingProgressBar = true
+
+# 關閉編輯文章連結
+[params.editPost]
+disabled = true
+
+# 支援多種主題
+defaultTheme = "auto" # dark, light or auto
+disableThemeToggle = false
+
+# 首頁設定
+
+[params.profileMode]
+enabled = true
+title = "YJK"
+subtitle = "Security • Reverse • Binary Exploitation"
+imageUrl = ""
+imageTitle = ""
+imageWidth = 120
+imageHeight = 120
+
+[[params.profileMode.buttons]]
+name = "所有文章"
+url = "/posts/"
+
+[[params.profileMode.buttons]]
+name = "搜尋"
+url = "/search/"
+
+[[params.profileMode.buttons]]
+name = "標籤"
+url = "/tags/"
+
+[[params.profileMode.buttons]]
+name = "關於我"
+url = "/about/"
+
+[params.homeInfoParams]
+Title = "YJK.tw"
+Content = "專精於漏洞研究、CTF 競賽的技術分享部落格 | CVE 深度分析 | CTF Writeups | 資安技術研究"
+
+# SEO 設定
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 2
+ignoreLocation = true
+findAllMatches = false
+includeScore = false
+keys = [
+  {name = "title", weight = 1.0},
+  {name = "tags", weight = 0.7},
+  {name = "categories", weight = 0.5},
+  {name = "summary", weight = 0.3},
+  {name = "content", weight = 0.1}
+]
+
+# 社交連結
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/YJK0805"
+
+[[params.socialIcons]]
+name = "email"
+url = "mailto:jerryko103@gmail.com"
+
+[[params.socialIcons]]
+name = "x"
+url = "https://x.com/YJK0805"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/yun-chieh-ko-934216242"
+
+[[params.socialIcons]]
+name = "facebook"
+url = "https://www.facebook.com/jerry.ko.379344/"
+
+[[params.socialIcons]]
+name = "telegram"
+url = "https://t.me/yjk0805"
+
+# 選單設定
+[menu]
+[[menu.main]]
+identifier = "posts"
+name = "所有文章"
+url = "/posts/"
+weight = 10
+
+[[menu.main]]
+identifier = "search"
+name = "搜尋"
+url = "/search/"
+weight = 20
+
+[[menu.main]]
+identifier = "tags"
+name = "標籤"
+url = "/tags/"
+weight = 30
+
+[[menu.main]]
+identifier = "about"
+name = "關於"
+url = "/about/"
+weight = 40
+
+# 輸出格式設定
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+page = ["HTML"]
+section = ["HTML", "RSS"]
+

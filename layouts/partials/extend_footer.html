@@ -1,0 +1,12 @@
+{{/* 擴展 footer 區塊，添加 JavaScript 功能 */}}
+
+{{ if .IsPage }}
+{{/* 閱讀進度條和浮動目錄 JS */}}
+{{ $readingProgressJS := resources.Get "js/reading-progress.js" }}
+{{ if $readingProgressJS }}
+{{ $readingProgressJS := $readingProgressJS | resources.Minify }}
+<script src="{{ $readingProgressJS.RelPermalink }}"></script>
+{{ end }}
+
+
+{{ end }}

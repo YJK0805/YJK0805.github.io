@@ -1,0 +1,19 @@
+{{/* 擴展 head 區塊，添加自訂 CSS */}}
+
+{{/* 字體與排版優化 CSS */}}
+{{ $typographyCSS := resources.Get "css/extended/typography-optimization.css" }}
+{{ if $typographyCSS }}
+{{ $typographyCSS := $typographyCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $typographyCSS.RelPermalink }}">
+{{ end }}
+
+{{/* 閱讀進度條 CSS */}}
+{{ if .IsPage }}
+{{ $readingProgressCSS := resources.Get "css/extended/reading-progress.css" }}
+{{ if $readingProgressCSS }}
+{{ $readingProgressCSS := $readingProgressCSS | resources.Minify }}
+<link rel="stylesheet" href="{{ $readingProgressCSS.RelPermalink }}">
+{{ end }}
+
+
+{{ end }}

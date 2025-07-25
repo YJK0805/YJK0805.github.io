@@ -1,0 +1,191 @@
+/* 程式碼區塊優化 */
+
+/* 程式碼容器 */
+.highlight {
+    position: relative;
+    margin: 1.5em 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--code-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 程式碼語言標識 */
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--secondary);
+}
+
+.code-language {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.code-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* 摺疊按鈕 */
+.code-collapse-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+    color: var(--secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.code-collapse-btn:hover {
+    background: var(--theme);
+    color: var(--primary);
+}
+
+/* 程式碼內容區域 */
+.code-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.code-content.collapsed {
+    max-height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.code-content.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(transparent, var(--code-bg));
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 程式碼區塊本體 */
+.highlight pre {
+    margin: 0;
+    padding: 16px;
+    overflow-x: auto;
+    background: transparent;
+    line-height: 1.6;
+}
+
+/* 行號優化 */
+.highlight .ln {
+    color: var(--secondary);
+    margin-right: 16px;
+    user-select: none;
+}
+
+/* 複製按鈕位置調整 */
+.highlight .copy-to-clipboard {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+}
+
+/* 長程式碼處理 */
+.code-long {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* 程式碼高亮主題統一 */
+:root {
+    --code-bg: #f8f9fa;
+    --code-border: #e9ecef;
+}
+
+[data-theme="dark"] {
+    --code-bg: #1e1e1e;
+    --code-border: #333;
+}
+
+/* 語法高亮顏色統一 */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { 
+    color: #0066cc; 
+}
+
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx {
+    color: #008000;
+}
+
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cp, .highlight .cs {
+    color: #808080;
+    font-style: italic;
+}
+
+.highlight .n, .highlight .na, .highlight .nb, .highlight .nc, .highlight .nd, .highlight .ne, .highlight .nf, .highlight .ni, .highlight .nl, .highlight .nn, .highlight .no, .highlight .nt, .highlight .nv, .highlight .nx {
+    color: var(--content);
+}
+
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo {
+    color: #ff6600;
+}
+
+/* Dark mode 語法高亮 */
+[data-theme="dark"] .highlight .k,
+[data-theme="dark"] .highlight .kd,
+[data-theme="dark"] .highlight .kn,
+[data-theme="dark"] .highlight .kp,
+[data-theme="dark"] .highlight .kr,
+[data-theme="dark"] .highlight .kt { 
+    color: #569cd6; 
+}
+
+[data-theme="dark"] .highlight .s,
+[data-theme="dark"] .highlight .s1,
+[data-theme="dark"] .highlight .s2,
+[data-theme="dark"] .highlight .se,
+[data-theme="dark"] .highlight .sh,
+[data-theme="dark"] .highlight .si,
+[data-theme="dark"] .highlight .sx {
+    color: #ce9178;
+}
+
+[data-theme="dark"] .highlight .c,
+[data-theme="dark"] .highlight .c1,
+[data-theme="dark"] .highlight .cm,
+[data-theme="dark"] .highlight .cp,
+[data-theme="dark"] .highlight .cs {
+    color: #6a9955;
+    font-style: italic;
+}
+
+[data-theme="dark"] .highlight .m,
+[data-theme="dark"] .highlight .mf,
+[data-theme="dark"] .highlight .mh,
+[data-theme="dark"] .highlight .mi,
+[data-theme="dark"] .highlight .mo {
+    color: #b5cea8;
+}
+
+/* 移動裝置優化 */
+@media (max-width: 768px) {
+    .code-header {
+        padding: 6px 12px;
+    }
+    
+    .highlight pre {
+        padding: 12px;
+        font-size: 13px;
+    }
+    
+    .code-content.collapsed {
+        max-height: 150px;
+    }
+}

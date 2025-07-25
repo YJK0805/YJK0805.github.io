@@ -1,0 +1,23 @@
+# Hugo 產生的檔案
+/public/
+/resources/_gen/
+
+# Hugo 模組
+/go.sum
+/go.mod
+
+# 暫存檔案
+.DS_Store
+Thumbs.db
+
+# IDE 檔案
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日誌檔案
+*.log
+
+# 本機開發
+.hugo_build.lock

@@ -1,0 +1,200 @@
+/* 字體與排版優化 */
+
+/* 全域字體設定 - 改善中文顯示 */
+:root {
+    --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Source Code Pro", "Cascadia Code", Consolas, "DejaVu Sans Mono", monospace;
+}
+
+/* 主要內容區域字體優化 */
+body {
+    font-family: var(--font-sans);
+    line-height: 1.7; /* 增加行高改善可讀性 */
+    font-size: 16px; /* 基礎字體大小 */
+}
+
+/* 文章內容區域 */
+.post-content {
+    font-size: 17px; /* 文章內容稍大 */
+    line-height: 1.8;
+    letter-spacing: 0.3px; /* 增加字母間距 */
+}
+
+/* 標題優化 */
+.post-content h1 {
+    font-size: 2.2em;
+    line-height: 1.3;
+    margin: 1.5em 0 0.8em 0;
+    font-weight: 700;
+}
+
+.post-content h2 {
+    font-size: 1.8em;
+    line-height: 1.4;
+    margin: 1.3em 0 0.7em 0;
+    font-weight: 600;
+}
+
+.post-content h3 {
+    font-size: 1.5em;
+    line-height: 1.4;
+    margin: 1.2em 0 0.6em 0;
+    font-weight: 600;
+}
+
+.post-content h4 {
+    font-size: 1.3em;
+    line-height: 1.4;
+    margin: 1.1em 0 0.5em 0;
+    font-weight: 500;
+}
+
+/* 段落間距優化 */
+.post-content p {
+    margin: 1.2em 0;
+    text-align: justify; /* 兩端對齊，中文排版更整齊 */
+}
+
+/* 列表優化 */
+.post-content ul, 
+.post-content ol {
+    margin: 1em 0;
+    padding-left: 2em;
+    line-height: 1.8;
+}
+
+.post-content li {
+    margin: 0.3em 0;
+}
+
+/* 程式碼區塊優化 */
+.post-content pre {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 1.5em 0;
+    padding: 1.2em;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.post-content code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    background-color: var(--code-bg);
+}
+
+/* 引用區塊優化 */
+.post-content blockquote {
+    font-size: 1.05em;
+    line-height: 1.7;
+    margin: 1.5em 0;
+    padding: 1em 1.5em;
+    border-left: 4px solid var(--primary);
+    font-style: italic;
+}
+
+/* 表格優化 */
+.post-content table {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 1.5em 0;
+}
+
+.post-content th,
+.post-content td {
+    padding: 0.8em 1em;
+}
+
+/* 移動裝置優化 */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .post-content {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    
+    .post-content h1 {
+        font-size: 1.9em;
+    }
+    
+    .post-content h2 {
+        font-size: 1.6em;
+    }
+    
+    .post-content h3 {
+        font-size: 1.4em;   
+    }
+    
+    .post-content pre {
+        font-size: 13px;
+        padding: 1em;
+    }
+}
+
+/* 圖片響應式優化 */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5em auto; /* 圖片居中並增加上下間距 */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 控制圖片最大高度，避免過大 */
+.post-content img {
+    max-height: 70vh; /* 最大高度為視窗高度的70% */
+    object-fit: contain; /* 保持圖片比例 */
+}
+
+/* 對於特別大的圖片，進一步限制寬度 */
+.post-content img[src*="hackmd.io"] {
+    max-width: 80%; /* HackMD圖片最大寬度80% */
+}
+
+/* 小圖片（如圖標）不需要過多間距 */
+.post-content img[width], 
+.post-content img[style*="width"] {
+    margin: 0.5em auto;
+}
+
+/* 移動裝置上的圖片優化 */ 
+@media (max-width: 768px) {
+    .post-content img {
+        max-width: 95%;
+        max-height: 60vh;
+        margin: 1em auto;
+    }
+    
+    .post-content img[src*="hackmd.io"] {
+        max-width: 90%;
+    }
+}
+
+/* 小螢幕優化 */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .post-content {
+        font-size: 15px;
+    }
+    
+    .post-content ul, 
+    .post-content ol {
+        padding-left: 1.5em;
+    }
+    
+    .post-content img {
+        max-width: 100%;
+        max-height: 50vh;
+        margin: 0.8em auto;
+    }
+}

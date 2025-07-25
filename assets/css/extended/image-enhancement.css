@@ -1,0 +1,224 @@
+/* 圖片處理優化 */
+
+/* 圖片 lazy loading 樣式 */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin: 1em 0;
+}
+
+.post-content img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Lazy loading 佔位符 */
+.img-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 8px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    font-size: 14px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+[data-theme="dark"] .img-placeholder {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+}
+
+/* 圖片加載淡入效果 */
+.img-lazy {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.img-lazy.loaded {
+    opacity: 1;
+}
+
+/* 圖片點擊放大模態框 */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.image-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.image-modal.show img {
+    transform: scale(1);
+}
+
+/* 關閉按鈕 */
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.image-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* 圖片信息顯示 */
+.image-modal-info {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+    max-width: 80%;
+    text-align: center;
+}
+
+/* 圖片導航按鈕（如果有多張圖片） */
+.image-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.image-modal-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.image-modal-nav.prev {
+    left: 20px;
+}
+
+.image-modal-nav.next {
+    right: 20px;
+}
+
+/* 移動裝置優化 */
+@media (max-width: 768px) {
+    .image-modal img {
+        max-width: 95%;
+        max-height: 85%;
+    }
+    
+    .image-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+    
+    .image-modal-info {
+        bottom: 10px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .image-modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .image-modal-nav.prev {
+        left: 10px;
+    }
+    
+    .image-modal-nav.next {
+        right: 10px;
+    }
+}
+
+/* 圖片加載錯誤處理 */
+.img-error {
+    background: var(--code-bg);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 2em;
+    text-align: center;
+    color: var(--secondary);
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-error::before {
+    content: "🖼️";
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.img-error::after {
+    content: "圖片載入失敗";
+    font-size: 0.9em;
+}

@@ -1,0 +1,205 @@
+/* 閱讀進度條樣式 - 移至底部 */
+.reading-progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #007acc, #00a8ff);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 -1px 3px rgba(0, 122, 204, 0.3);
+}
+
+/* Dark mode 支援 */
+[data-theme="dark"] .reading-progress {
+    background: linear-gradient(90deg, #4fc3f7, #29b6f6);
+    box-shadow: 0 -1px 3px rgba(79, 195, 247, 0.3);
+}
+
+/* 隱藏 PaperMod 原生的回到頂部按鈕 */
+#top-link {
+    display: none !important;
+}
+
+/* 浮動目錄按鈕 - 左下角 */
+.floating-toc {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #007acc, #0056b3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+/* 回到頂部按鈕 - 右下角 */
+.scroll-to-top-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 122, 204, 0.9);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.scroll-to-top-btn.show {
+    opacity: 0.9;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+    background: rgba(0, 122, 204, 1);
+}
+
+.scroll-to-top-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.floating-toc:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 122, 204, 0.4);
+    background: linear-gradient(135deg, #0084ff, #0066cc);
+}
+
+.floating-toc svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+/* 浮動目錄面板 - 從左下角展開 */
+.floating-toc-panel {
+    position: fixed;
+    left: 20px;
+    bottom: 80px;
+    max-width: 300px;
+    max-height: 400px;
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    padding: 16px;
+}
+
+.floating-toc-panel.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.floating-toc-panel h4 {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.floating-toc-panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.floating-toc-panel li {
+    margin: 0;
+    padding: 0;
+}
+
+.floating-toc-panel a {
+    display: block;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--content);
+    text-decoration: none;
+    line-height: 1.4;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.floating-toc-panel a:hover {
+    color: var(--primary);
+    background: var(--code-bg);
+    padding-left: 8px;
+}
+
+/* 層級縮排 */
+.floating-toc-panel li[data-level="2"] a { padding-left: 12px; }
+.floating-toc-panel li[data-level="3"] a { padding-left: 24px; }
+.floating-toc-panel li[data-level="4"] a { padding-left: 36px; }
+.floating-toc-panel li[data-level="5"] a { padding-left: 48px; }
+.floating-toc-panel li[data-level="6"] a { padding-left: 60px; }
+
+/* 當前閱讀位置高亮 */
+.floating-toc-panel a.active {
+    color: var(--primary);
+    font-weight: 600;
+    background: var(--code-bg);
+    padding-left: 8px;
+}
+
+/* 移動裝置優化 */
+@media (max-width: 768px) {
+    .floating-toc {
+        left: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scroll-to-top-btn {
+        right: 15px;
+        bottom: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .floating-toc-panel {
+        left: 15px;
+        bottom: 70px;
+        max-width: calc(100vw - 30px);
+        max-height: 300px;
+    }
+    
+    .floating-toc svg,
+    .scroll-to-top-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+}
