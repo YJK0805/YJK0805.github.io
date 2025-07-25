@@ -1,0 +1,95 @@
+baseURL: 'https://YJK0805.github.io'
+languageCode: 'zh-tw'
+title: 'YJK.tw'
+theme: 'PaperMod'
+
+params:
+  env: production
+  title: YJK.tw
+  description: "專精於漏洞研究、CTF 競賽和資安技術分享的個人部落格"
+  keywords: [資安, CVE, CTF, 漏洞分析, 滲透測試, 逆向工程]
+  author: YJK
+  DateFormat: "2006-01-02"
+  defaultTheme: auto
+  disableThemeToggle: false
+  
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  profileMode:
+    enabled: true
+    title: "YJK"
+    subtitle: "Security • Reverse • Binary Exploitation"
+    imageUrl: ""
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: YJK
+    buttons:
+      - name: 所有文章
+        url: /posts
+      - name: 搜尋
+        url: /search
+      - name: 標籤
+        url: /tags
+      - name: 關於我
+        url: /about
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/YJK0805"
+    - name: email
+      url: "mailto:jerryko103@gmail.com"
+    - name: x
+      url: "https://x.com/YJK0805"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/yun-chieh-ko-934216242"
+    - name: facebook
+      url: "https://www.facebook.com/jerry.ko.379344/"
+    - name: telegram
+      url: "https://t.me/yjk0805"
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 2
+    keys: ["title", "permalink", "summary", "content"]
+
+menu:
+  main:
+    - identifier: posts
+      name: 所有文章
+      url: /posts/
+      weight: 10
+    - identifier: search
+      name: 搜尋
+      url: /search/
+      weight: 20
+    - identifier: tags
+      name: 標籤
+      url: /tags/
+      weight: 30
+    - identifier: about
+      name: 關於
+      url: /about/
+      weight: 40
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
