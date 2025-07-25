@@ -47,10 +47,17 @@ jobs:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo \
-            --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}"
+          echo "Hugo version:"
+          hugo version
+          echo "Content structure:"
+          find content -name "*.md" -type f | head -10
+          echo "Building site with minimal config..."
+          hugo --config hugo-minimal.toml --baseURL "${{ steps.pages.outputs.base_url }}" --verbose || echo "Build failed, trying original config..."
+          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}" --verbose
+          echo "Generated files:"
+          ls -la public/
+          echo "Checking for index.html:"
+          ls -la public/index.html || echo "index.html not found!"
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

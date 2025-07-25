@@ -1,0 +1,23 @@
+baseURL = 'https://YJK0805.github.io'
+languageCode = 'zh-tw'
+title = 'YJK.tw'
+theme = 'PaperMod'
+
+[params]
+env = "production"
+
+[params.profileMode]
+enabled = true
+title = "YJK"
+subtitle = "Security • Reverse • Binary Exploitation"
+
+[[params.profileMode.buttons]]
+name = "所有文章"
+url = "/posts/"
+
+[[params.profileMode.buttons]]
+name = "關於我"
+url = "/about/"
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
