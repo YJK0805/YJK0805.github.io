@@ -52,8 +52,8 @@ jobs:
           echo "Content structure:"
           find content -name "*.md" -type f | head -10
           echo "Building site with minimal config..."
-          hugo --config hugo-minimal.toml --baseURL "${{ steps.pages.outputs.base_url }}" --verbose || echo "Build failed, trying original config..."
-          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}" --verbose
+          hugo --config hugo-minimal.toml --baseURL "${{ steps.pages.outputs.base_url }}" || echo "Build failed, trying original config..."
+          hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}"
           echo "Generated files:"
           ls -la public/
           echo "Checking for index.html:"
