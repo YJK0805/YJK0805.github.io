@@ -1,4 +1,4 @@
-baseURL = 'https://YJK0805.github.io/'
+baseURL = 'https://YJK0805.github.io'
 languageCode = 'zh-tw'
 title = 'YJK.tw'
 theme = 'PaperMod'
