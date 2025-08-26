@@ -49,7 +49,7 @@ Stack Pivoting 是將 ROP chain 分次寫在指定區域，最後將 stack 遷�
 
 查看以下原始碼：
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -71,7 +71,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/stack_pivoting.c  -o ./stack_pivoting/share/stack_pivoting -fno-stack-protector -no-pie -static
 ```
 
@@ -95,7 +95,7 @@ gcc src/stack_pivoting.c  -o ./stack_pivoting/share/stack_pivoting -fno-stack-pr
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 
 context.arch = 'amd64'

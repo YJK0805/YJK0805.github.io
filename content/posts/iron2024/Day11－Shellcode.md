@@ -44,7 +44,7 @@ TocOpen: false
 
 查看以下程式原始碼：
 
-```c=
+```c
 #include<stdio.h>
 #include <unistd.h>
 #include <sys/mman.h>
@@ -67,7 +67,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 ```
 
@@ -100,7 +100,7 @@ gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 完整 exploit：
 以下是完整的 Exploit 程式碼，我也附上另一個 Shellcode，供讀者測試。
 
-```py=
+```python
 from pwn import *
 context.arch = 'amd64'
 #r = process('../ret2sc/share/ret2sc')

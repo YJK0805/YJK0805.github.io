@@ -20,7 +20,7 @@ TocOpen: false
 
 ## Lab
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -64,7 +64,7 @@ int main(){
 
 使用以下指令進行編譯（注意，預設編譯會是 Partial RELRO）：
 
-```sh=
+```bash
 gcc src/got.c -o ./got/share/got -fno-stack-protector -no-pie
 ```
 
@@ -91,7 +91,7 @@ gcc src/got.c -o ./got/share/got -fno-stack-protector -no-pie
 記得因為程式直接接收數字及數值，因此以字串的形式輸入即可。
 
 完整 exploit：
-```py=
+```python
 from pwn import *
 
 # r = process('../got/share/got')

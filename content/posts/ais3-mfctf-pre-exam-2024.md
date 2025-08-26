@@ -15,7 +15,7 @@ TocOpen: false
 
 網頁是一個簡單的計算機程式
 
-![image](https://hackmd.io/_uploads/r1gvMt-E0.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image1.png)
 
 透過攔截封包與 app.py 程式碼會發現他是將結果傳 POST 請求到 /calculate，並傳入 eval 做計算，所以可以傳入程式碼做解析，接下來看到 app.py 會發現傳送過去的 expression 空格跟底線都會被過濾，所以應該是不可以 import 其他東西，接下來看到 docker-compose.yml 可知 flag 在 /flag，因此直接透過開檔讀檔拿到 flag
 
@@ -58,9 +58,9 @@ services:
 
 可以用 burp 或是 python
 
-![image](https://hackmd.io/_uploads/rJA0RxJ4C.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image2.png)
 
-![image](https://hackmd.io/_uploads/H1glEFZVC.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image3.png)
 
 AIS3{7RiANG13_5NAK3_I5_50_3Vi1}
 
@@ -70,25 +70,25 @@ AIS3{7RiANG13_5NAK3_I5_50_3Vi1}
 
 先 decompile 後 (可以用 ida、ghidra、binary ninja...) 會發現他會先 sleep 很久才會 print 出 flag
 
-![image](https://hackmd.io/_uploads/Bk4x_tWNC.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image4.png)
 
 所以可以改 sleep 值然後 patch 接下來 export 成執行檔
 
 先找到控制 sleep 秒數的組語然後右鍵 patch instruction
 
-![image](https://hackmd.io/_uploads/Hy9o_KWEC.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image5.png)
 
-![image](https://hackmd.io/_uploads/BkmstF-40.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image6.png)
 
-![image](https://hackmd.io/_uploads/HJ3ZqY-VA.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image7.png)
 
 format 記得要設定成 Original File
 
-![image](https://hackmd.io/_uploads/H1B7cK-N0.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image8.png)
 
 接下來執行程式會發現它慢慢 print 出 flag，不過他輸出完會被清掉，所以要在最後的時候按 enter 防止他被清掉
 
-![image](https://hackmd.io/_uploads/SyxvYK-NR.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image9.png)
 
 AIS3{You_are_the_master_of_time_management!!!!?}
 
@@ -97,24 +97,24 @@ AIS3{You_are_the_master_of_time_management!!!!?}
 將檔案 decompile 發現他會先分配給 buffer0~3 malloc 空間，然後會先進 print_flag()，然後要輸入 4 個字串，接下來進 xor_string()，和 complex_funxtion()，把字串轉換後再做最後比對
 
 main function
-![image](https://hackmd.io/_uploads/HkGk6YW4C.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image10.png)
 
 print_flag()
 這邊會給出 flag 前墜 `AIS3{G0D`
 
-![image](https://hackmd.io/_uploads/BksmCY-4R.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image11.png)
 
 xor_string()
 
 就是把字串跟傳進去的陣列做 xor
 
-![image](https://hackmd.io/_uploads/BJR9CKZVC.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image12.png)
 
 complex_funxtion()
 
 將傳入的參數做一些操作，好像也可以自己逆向，不過後面我選擇用 angr 做
 
-![image](https://hackmd.io/_uploads/HJynkcZ4C.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image13.png)
 
 MyFirstCTF 賽後出題者說可以用 Angr 解出來，因此就看了一下 Angr
 
@@ -131,15 +131,15 @@ buffer0 -> malloced address -> fake heap address
 
 找 buffer0~4 的 address (可以用 ghidra、ida，但我用 nm)
 
-![image](https://hackmd.io/_uploads/SJg0Z9-ER.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image14.png)
 
 找到 heap 的 address (用 gdb 然後 vmmap)
 
-![image](https://hackmd.io/_uploads/ByeVQz5ZNA.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image15.png)
 
 傳入 xor_string() 的 array (用 ghidra 或是 ida)
 
-![image](https://hackmd.io/_uploads/Bk7cScWNA.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image16.png)
 
 ```python
 import angr
@@ -216,20 +216,20 @@ static linked 的 ROP 超基本題
 
 static linked
 
-![image](https://hackmd.io/_uploads/S1iMIq-EC.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image17.png)
 
 decompile 後發現進了 calculator()
 
-![image](https://hackmd.io/_uploads/SyqrU5WN0.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image18.png)
 
 calculator() 基本上計算沒什麼問題及注入點，不過可以按 q 跳出 function，接下來會走到 goodbye()
 
-![image](https://hackmd.io/_uploads/Hydxv5b4C.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image19.png)
 
 goodbye() 會看到他使用 gets 讀輸入，因此可以輕易進行 buffer overflow 並修改 return address，並加上他沒有 PIE，所以是一題 ROP 基本題
 
-![image](https://hackmd.io/_uploads/Hk3XDcWER.png)
-![image](https://hackmd.io/_uploads/rkCdP9bV0.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image20.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image21.png)
 
 solution:
 
@@ -263,7 +263,7 @@ r.sendlineafter(b']\n', leave)
 r.interactive()
 ```
 
-![image](https://hackmd.io/_uploads/SJ43dqbNR.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image22.png)
 
 AIS3{0mg_k4zm4_mu57_b3_k1dd1ng_m3_2e89c9}
 
@@ -277,7 +277,7 @@ AIS3{0mg_k4zm4_mu57_b3_k1dd1ng_m3_2e89c9}
 
 題目點開就有 flag 了
 
-![image](https://hackmd.io/_uploads/BkLDljWN0.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image23.png)
 
 AIS3{Welc0me_to_AIS3_PreExam_2o24!}
 
@@ -285,7 +285,7 @@ AIS3{Welc0me_to_AIS3_PreExam_2o24!}
 
 要先做一次正常輸入，讓 count 跟 pile 都被賦予值，不然會觸發 Exception error，後面可以用除了 0、1、2 以外的非正常操作讓自己跳過動作，但每次跳過 AI 都還是會做操作移除，所以等 AI 自己拿到剩下一堆時，就可以把最後一堆拿完也就獲勝並拿到 flag 了
 
-![image](https://hackmd.io/_uploads/BJIavWZER.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image24.png)
 
 AIS3{Ar3_y0u_a_N1m_ma57er_0r_a_Crypt0_ma57er?} 
 
@@ -293,11 +293,11 @@ AIS3{Ar3_y0u_a_N1m_ma57er_0r_a_Crypt0_ma57er?}
 
 打開網頁會發現是一個用 emoji 控制 command 的 console
 
-![image](https://hackmd.io/_uploads/HyOEt5WEC.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image25.png)
 
 找了一段時間發現有 🐱 跟 ⭐ 分別代表 `cat`、`*`， 可以輸出目前目錄底下所有檔案
 
-![image](https://hackmd.io/_uploads/SypqKcWV0.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image26.png)
 
 有輸出程式碼，裡面有各個 emoji 的對應，還有輸出以下字串
 
@@ -312,7 +312,7 @@ cat: templates: Is a directory
 
 💿 🚩 😓🤬 🐱 ⭐：
 
-![image](https://hackmd.io/_uploads/S1Z4T5Z4A.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image27.png)
 
 ```
 #flag-printer.py
@@ -324,14 +324,14 @@ print(open('/flag','r').read())
 
 💿 🚩 😓🤬  🐍 ⭐：
 
-![image](https://hackmd.io/_uploads/r18zTqb4A.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image28.png)
 
 AIS3{🫵🪡🉐🤙🤙🤙👉👉🚩👈👈}
 
 ### Three Dimensional Secret
 
 檔案是一個封包檔，不過我直接 strings 看他，會發現很多行都是這個格式，後面查了一下這個東西叫做 gcode，好像是用在 3D 列印
-![image](https://hackmd.io/_uploads/HJRSksZ4A.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image29.png)
 
 所以將所有 `G` 前墜的資料都挑出來放到另一個檔案
 
@@ -339,6 +339,6 @@ AIS3{🫵🪡🉐🤙🤙🤙👉👉🚩👈👈}
 
 後面隨便找個 gcode viewer，我這邊用的是 https://gcode.ws/ ，記得切換到 3D，然後就看到 flag 了
 
-![image](https://hackmd.io/_uploads/BJ_Vlib40.png)
+![image](/images/ais3-mfctf-pre-exam-2024/ais3-mfctf-pre-exam-2024_image30.png)
 
 AIS3{b4d1y_tun3d_PriN73r}

@@ -28,7 +28,7 @@ TocOpen: false
 
 查看以下原始碼：
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -145,7 +145,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```bash=
+```bash
 gcc src/uaf.c -o ./uaf/share/uaf -no-pie -fstack-protector-all
 ```
 
@@ -167,7 +167,7 @@ gcc src/uaf.c -o ./uaf/share/uaf -no-pie -fstack-protector-all
 
 漏洞出現在刪除 Note 的部分。刪除後沒有將指標設為 NULL，因此仍可對該位置進行操作。接下來，我們可以通過一個簡單的腳本來測試這個漏洞，在此之前，我們可以先將各個功能寫好，這樣會比較方便操作
 
-```py=
+```python
 from pwn import *
 
 r = process('../uaf/share/uaf')
@@ -189,7 +189,7 @@ def print_(idx):
 
 我們首先新增兩個 note，觀察它們在 Heap 上的狀態：
 
-```py=
+```python
 from pwn import *
 
 r = process('../uaf/share/uaf')
@@ -223,7 +223,7 @@ r.interactive()
 
 接下來，我們嘗試釋放這兩塊記憶體，並繼續觀察：
 
-```py=
+```python
 from pwn import *
 
 r = process('../uaf/share/uaf')
@@ -257,7 +257,7 @@ r.interactive()
 
 此時我們使用簡單的 script 會發現可以覆蓋原本的 function pointer。如果我們再 print 這個 note 的 content，就能控制執行流程。
 
-```py=
+```python
 from pwn import *
 
 r = process('../uaf/share/uaf')
@@ -300,7 +300,7 @@ r.interactive()
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 
 # r = process('../uaf/share/uaf')

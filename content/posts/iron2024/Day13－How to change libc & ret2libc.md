@@ -72,7 +72,7 @@ TocOpen: false
 
 以下是範例程式碼：
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -123,7 +123,7 @@ int main(){
 
 
 
-```sh=
+```bash
 gcc src/ret2libc.c -o ./ret2libc/share/ret2libc -fno-stack-protector
 ```
 
@@ -138,7 +138,7 @@ gcc src/ret2libc.c -o ./ret2libc/share/ret2libc -fno-stack-protector
 
 然後，我們可以使用以下 script 並連接 `gdb` 來測試是否能讀取到 `libc` 位址：
 
-```py=
+```python
 from pwn import *
 
 r = process('./ret2libc')
@@ -165,7 +165,7 @@ r.interactive()
 
 ![image](/images/iron2024/day13_image10.png)
 
-```py=
+```python
 from pwn import *
 
 r = process('./ret2libc')
@@ -214,7 +214,7 @@ system 的 offset 可以使用 gdb 將程式執行起來再使用 `off system` �
 
 如此一來就可以開始寫 exploit 了
 
-```py=
+```python
 from pwn import *
 
 r = process('./ret2libc')
@@ -250,7 +250,7 @@ r.interactive()
 
 加上 ret 後會像是這樣
 
-```py=
+```python
 from pwn import *
 
 r = process('./ret2libc')
@@ -282,7 +282,7 @@ r.interactive()
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 
 # r = process('../ret2libc/share/ret2libc')

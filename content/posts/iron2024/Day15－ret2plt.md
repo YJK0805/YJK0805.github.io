@@ -40,7 +40,7 @@ TocOpen: false
 
 查看以下程式碼：
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
@@ -63,7 +63,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/ret2plt.c -o ./ret2plt/share/ret2plt -fno-stack-protector -no-pie
 ```
 
@@ -98,7 +98,7 @@ gcc src/ret2plt.c -o ./ret2plt/share/ret2plt -fno-stack-protector -no-pie
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 
 # r = process('../ret2plt/share/ret2plt')

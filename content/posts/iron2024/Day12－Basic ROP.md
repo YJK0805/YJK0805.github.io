@@ -20,7 +20,7 @@ TocOpen: false
 
 觀察以下程式碼，並使用底下的編譯參數分別編譯：
 
-```c=
+```c
 #include<stdio.h>
 int main(){
     printf("Hello World!\n");
@@ -28,7 +28,7 @@ int main(){
 }
 ```
 
-```sh=
+```bash
 gcc test.c -static -o static
 gcc test.c -o dynamic
 ```
@@ -102,7 +102,7 @@ execve | man/ cs/ | 0x3b | const char \*filename | const char \*const \*argv | c
     
 查看以下原始碼：
 
-```c=
+```c
 #include<stdio.h>
 int main(){
     setvbuf(stdout, 0, 2, 0);
@@ -117,7 +117,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/rop.c -o ./rop/share/rop -fno-stack-protector -no-pie -static
 ```
 
@@ -148,7 +148,7 @@ gcc src/rop.c -o ./rop/share/rop -fno-stack-protector -no-pie -static
 
 這裡的 address 可以用 `p64()` 包起來，也可以像我一樣使用 `flat()` 將整段串起來。不過使用 `flat()` 時要先設定 `context.arch`。
 
-```py=
+```python
 from pwn import *
 
 context.arch = 'amd64'

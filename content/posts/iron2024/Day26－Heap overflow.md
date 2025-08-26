@@ -22,7 +22,7 @@ Heap Overflow 簡單來說就是發生在 heap 段的 buffer overflow。與 Stac
 
 攻擊的方式是透過 Overflow 覆蓋已經 free 掉的 chunk 中的 fd 和 bk，然後利用前面提到的 unlink 機制（即 `fd->bk = BK` 和 `BK->fd = FD`）來更改記憶體位置。具體來說，unlink 的程式碼如下：
 
-```c=
+```c
 unlink(P,BK,FD){
     FD = P->fd;
     BK = P->bk;

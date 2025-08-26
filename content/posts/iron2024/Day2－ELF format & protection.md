@@ -31,7 +31,7 @@ ELF 是 Executable and Linkable Format 的縮寫，可以簡單稱為可執行�
 
 以下是一段程式碼中各段落存在的區段
 
-```c=
+```c
 #include <stdio.h>
 int a; // .bss
 int b = 100; // .data
@@ -53,14 +53,14 @@ int main(){
     - 可執行檔的程式碼和資料段在映射到記憶體時會隨機化
     - 開啟時，每次執行位置都不同，反之則固定某個值
     - 關閉方式：
-        - ```sh=
+        - ```bash
           gcc main.c -no-pie
           ```
     - ASLR (Address Space Layout Randomization)
         - 針對 Process 的防護機制，對整個進程的地址空間（如動態載入 library、stack、heap 等）進行隨機化
         - 如果開啟 PIE，則需要搭配開啟 ASLR 才會有效果
         - 關閉方式
-            - ```sh=
+            - ```bash
               echo 0 > /proc/sys/kernel/randomize_va_space // 關閉
               echo 1 > /proc/sys/kernel/randomize_va_space // 半隨機
               echo 2 > /proc/sys/kernel/randomize_va_space // 全隨機
@@ -69,7 +69,7 @@ int main(){
     - 可寫的不可執行、可執行的不可寫
     - 防範 Shell Code 類型的攻擊
     - 關閉方式：
-        - ```sh=
+        - ```bash
           gcc main.c -zexecstack
           ```
 - Canary (Stack Canary/ Stack Protector)
@@ -79,7 +79,7 @@ int main(){
     - 關閉方式
         - `gcc main.c -fno-stack-protector`
     - 有多種開啟參數
-        - ```sh=
+        - ```bash
           gcc main.c –fstack-protector // 動態配置記憶體或 buffer > 8bytes 的函數加入
           gcc main.c –fstack-protector-all // 所有 function 都加入
           gcc main.c –fstack-protector-strong // -fstack-protector 的條件及程式內有 local 變數為陣列類型或變數位址用來賦值或當作函式參數或以 register 類型宣告的 local 變數

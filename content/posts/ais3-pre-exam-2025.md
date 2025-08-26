@@ -9,7 +9,7 @@ showToc: true
 TocOpen: false
 ---
 
-![比賽結果](https://hackmd.io/_uploads/ByQ_D-NGee.png)
+![比賽結果](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image1.png)
 
 author：`YJK`
 ID：`YJK`
@@ -18,7 +18,7 @@ ID：`YJK`
 
 ### Welcome
 
-![image](https://hackmd.io/_uploads/BJNwOZNMll.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image2.png)
 
 flag: `AIS3{Welcome_And_Enjoy_The_CTF_!}`
 
@@ -26,32 +26,32 @@ flag: `AIS3{Welcome_And_Enjoy_The_CTF_!}`
 
 ### Ramen CTF
 
-![image](https://hackmd.io/_uploads/BydAY7NMlx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image3.png)
 
 flag: `AIS3{樂山溫泉拉麵:蝦拉麵}`
 
 圖片右邊有一張發票條碼沒有被擋
 
-![chal](https://hackmd.io/_uploads/ryw8574feg.jpg)
+![chal](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image4.jpg)
 
-![2025-05-24 11 18 21](https://hackmd.io/_uploads/r1zwc7EGel.png)
+![2025-05-24 11 18 21](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image5.png)
 
 掃描之後發現應該是蝦拉麵，發票上店家是平和溫泉拉麵店
 
-![image](https://hackmd.io/_uploads/HJp0jXEMxl.png)
-![image](https://hackmd.io/_uploads/rJYk3XNGxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image6.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image7.png)
 
 google 之後發現地址是 `宜蘭縣礁溪鄉德陽村礁溪路五段108巷1號`
 
-![image](https://hackmd.io/_uploads/Sk9NhQEMlx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image8.png)
 
 此地址在 google map 上是 `樂山溫泉拉麵`
 
-![image](https://hackmd.io/_uploads/HyPu2XNfxx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image9.png)
 
 ### AIS3 Tiny Server - Web / Misc
 
-![image](https://hackmd.io/_uploads/H1CSaXNGeg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image10.png)
 
 flag: `AIS3{tInY_we8_53RV3R_WItH_FIle_8R0Ws1n9_@s_@_Fe@TuRe}`
 
@@ -59,49 +59,49 @@ flag: `AIS3{tInY_we8_53RV3R_WItH_FIle_8R0Ws1n9_@s_@_Fe@TuRe}`
 
 點進去會發現是題目簡介網頁，並發現網址給了 index.html
 
-![image](https://hackmd.io/_uploads/S1DbCmEfxx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image11.png)
 
 另外題目有給小提示，專注在第一個提示就好
 
-![image](https://hackmd.io/_uploads/r1YNCXEMlx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image12.png)
 
 因為前面 index.html 的因素，直接訪問 http://chals1.ais3.org:20148/ ，會發現是個 file server 的感覺
 
-![image](https://hackmd.io/_uploads/Hyh5CX4Mxx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image13.png)
 
 不過這可能只是當初開 file server 指定的目錄，而不是機器的 root 目錄，嘗試透過 http://chals1.ais3.org:20148// ，跳脫上去試試看，發現應該是 root 目錄，直接訪問檔案
 
-![image](https://hackmd.io/_uploads/HkgZy4EMxe.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image14.png)
 
-![image](https://hackmd.io/_uploads/r1381EEfxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image15.png)
 
 
 ## Reverse
 
 ### web flag checker
 
-![image](https://hackmd.io/_uploads/ry6lxNEfxe.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image16.png)
 
 flag: `AIS3{W4SM_R3v3rsing_w17h_g0_4pp_39229dd}`
 
 頁面是 flag checker
 
-![image](https://hackmd.io/_uploads/H1julNEzlg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image17.png)
 
 f12 後發現有 index.js 和 index.wasm
 
-![image](https://hackmd.io/_uploads/HJUigNEzeg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image18.png)
 
 推測應該是要考 wasm，所以載下來看，那這邊有關於 wasm 的 toolkit
 https://github.com/WebAssembly/wabt ，我是使用 wasm2c 先轉回去可讀性相對高的 c code
 
 直接看轉回來的 c code 會發現有個 flag checker 的 function，直接看那個 function
 
-![image](https://hackmd.io/_uploads/rJUVMNNzge.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image19.png)
 
 decompile 後程式碼有點長，這邊就不全部貼上來了
 
-![image](https://hackmd.io/_uploads/H1DtMV4zgl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image20.png)
 
 分析完之後發現應該是把 flag 分成 5 段並且跟某個值去做相對應位數的 rotate，後面是給 AI 去寫 script 的，整理之後 script 如下：
 
@@ -134,13 +134,13 @@ if __name__ == "__main__":
 
 ### AIS3 Tiny Server - Reverse
 
-![image](https://hackmd.io/_uploads/S1BWr4Vfxx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image21.png)
 
 flag: `AIS3{w0w_a_f1ag_check3r_1n_serv3r_1s_c00l!!!}`
 
 把檔案載下來丟 ida 之後發現 function 很少就 function 點一點，發現有個可疑的 function
 
-![image](https://hackmd.io/_uploads/SkQrO4NMgx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image22.png)
 
 後面也沒什麼逆邏輯，就直接把 v8 那邊轉一轉然後去跟 `rikki_l0v3` 做 xor 就有 flag 了，script 如下
 
@@ -158,17 +158,17 @@ print(result.decode('utf-8', errors='ignore'))
 
 ### A_simple_snake_game
 
-![image](https://hackmd.io/_uploads/SkEm9SNflg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image23.png)
 
 flag: `AIS3{CH3aT_Eng1n3?_0fcau53_I_bo_1T_by_hAnD}`
 
 簡單的貪食蛇遊戲
 
-![image](https://hackmd.io/_uploads/r1prcBEfex.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image24.png)
 
 直接丟 ida 看一下，並且感覺這種題目應該是分數到了會噴 flag，所以直接看 function 有個 `SnakeGame::Screen::drawText`，可能是輸出文字的，感覺有個可疑的數值跟一些在做 xor 的操作
 
-![image](https://hackmd.io/_uploads/BJKHjH4fxe.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image25.png)
 
 就直接把數值跟他 xor 的部分拉出來做一次就發現是 flag，script 如下
 
@@ -194,25 +194,25 @@ print("FLAG: ", decoded_string)
 
 ### Welcome to the World of Ave Mujica🌙
 
-![image](https://hackmd.io/_uploads/HJNe3H4zgg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image26.png)
 
 flag: `AIS3{Ave Mujica🎭將奇蹟帶入日常中🛐(Fortuna💵💵💵)...Ave Mujica🎭為你獻上慈悲憐憫✝️(Lacrima😭🥲💦)..._17a08e4f063f52a071ed1d36efcbf205}`
 
 檔案載下來丟 ida 然後會發現一開始先輸入 yes 會進下一個 stage，然後接下來會用 `read_int8()` 讀入數字並且將數字直接當作後續 read buffer 的長度
 
-![image](https://hackmd.io/_uploads/Hk-gyLEGxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image27.png)
 
 接下來看一下 `read_int8()`，會發現會用 atoi() 把字串轉數字，接下來確認是否 <= 127，再來使用 unsigned int 強制轉型回去正數，因此如果輸入負數即可繞過 <= 127 的檢查並且得到一個很大的數字，也代表可以讓 overflow 的空間變大
 
-![image](https://hackmd.io/_uploads/Hy-brUNzlg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image28.png)
 
 另外還有一個 function 是可以開 shell
 
-![image](https://hackmd.io/_uploads/ByI6BUVGgl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image29.png)
 
 確認一下保護機制，沒開 PIE、沒有 canary，所以可以直接 ret2func 開 shell
 
-![image](https://hackmd.io/_uploads/B1a1II4fgg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image30.png)
 
 script 如下
 
@@ -230,7 +230,7 @@ r.interactive()
 
 ### Format Number
 
-![image](https://hackmd.io/_uploads/rJCULLEfxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image31.png)
 
 flag: `AIS3{S1d3_ch@nn3l_0n_fOrM47_strln&_!!!}`
 
@@ -302,7 +302,7 @@ print(flag)
 
 ### MyGO schedule manager α (賽後解出)
 
-![image](https://hackmd.io/_uploads/rkpSfqNzgg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image32.png)
 
 flag: `AIS3{MyGO!!!!!T0m0rin_1s_cut3@u_a2r_mAsr3r_0f_CP1usp1us_string_a2d_0verf10w!_alpha_v3r2on_have_br0ken...Go_p1ay_b3ta!}`
 
@@ -514,21 +514,21 @@ show(r)
 r.interactive()
 ```
 
-![image](https://hackmd.io/_uploads/ByS_S94Geg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image33.png)
 
 然後後面 ida 之後才發現原來 edit title 可能會覆蓋到 edit content 拿到要寫入的值，並且如果 gdb 進去看結構會發現 0x4042C8 + 24 其實是儲存一個 address，因此我們如果 overflow title 的部分就代表會覆蓋到 address，所以才會導致 show 的時候拿不到值，因為 show 也是使用相同方式拿資料的，這部分就不 gdb 進去 demo 了，而這也代表我們可以將要寫資料的 address 直接透過 overflow title 的部分，接下來 edit content 的時候就會寫到那一塊了，但要注意，要記得 vmmap 看一下那一段是否可寫，不然寫了會 crash
 
-![image](https://hackmd.io/_uploads/Syfg8cVGlx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image34.png)
 
-![image](https://hackmd.io/_uploads/Sy--89EGel.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image35.png)
 
 那既然拿到任意寫，究竟要任意寫去哪裡，這時候看到 source code 會發現有個 debug_backdoor 是可以直接開 shell 的，因此我們只要 control flow 到那個 backdoor 就可以了，但會發現 schedule 結構上沒有 function pointer，然後確認一下保護機制會發現 Full RELRO，所以程式上的 got 也不可寫
 
-![image](https://hackmd.io/_uploads/Hk3DvqVGge.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image36.png)
 
 這時候就來到最有趣的時候了，我原本以為沒有給 libc 應該是可以不用打 libc，但最後也只有想到 libc 有個 got table 可以寫，最後就結束了，但後面覺得應該只差一點點，所以就乾脆直接把題目架起來，接下來進入 container 把 linker、loader 拉出來做 patchelf，但最後發現有些會 patch 失敗，所以就果斷進去 container 並且把 debug 環境處理好，然後一步一步跟著 debugger 走，會發現跟過去看過的 [Libc-GOT-Hijacking](https://github.com/n132/Libc-GOT-Hijacking)相同，有一個段落會是一堆 ABS 之類的，中間會跳到一段可寫的 got table，基本上我也沒在記哪邊可以寫，但可以好好關注以下圖片的可寫段，或是其他沒有圈起來但是他有 write 權限，如果中間有 jmp 到某段可以寫的，並且那邊看起來是一個 address，就可以嘗試寫寫看，就有機會可以 control flow
 
-![image](https://hackmd.io/_uploads/B1iN594Gxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image37.png)
 
 那就會發現我們會需要利用 libc，那就需要 leak libc，這時就可以利用 show 的部分，我們可以填入某個 got，那藉由 show 的功能去看 content 就可以察看到某個 libc address，所以只要藉由這樣的方式是就可以去計算 libc 的 base，以下是 leak libc base address 的 script
 
@@ -577,7 +577,7 @@ log.info(f'Libc base address: {hex(libc_base)}')
 r.interactive()
 ```
 
-![image](https://hackmd.io/_uploads/S1-0c9EGlg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image38.png)
 
 接下來只需要去找可以 control flow 的可寫段，並且把那一段寫成 backdoor function 就可以 control flow 了，而這部分就不多贅述，而我最後是寫到 puts 的 libc got table，因為這樣在寫完之後就可以直接 get shell(寫完之後本來會輸出 Edit Success)，以下是完整 script
 
@@ -633,53 +633,53 @@ r.interactive()
 
 ### Tomorin db 🐧
 
-![image](https://hackmd.io/_uploads/SJ_TIpEfee.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image39.png)
 
 flag: `AIS3{G01ang_H2v3_a_c0O1_way!!!_Us3ing_C0NN3ct_M3Th07_L0l@T0m0r1n_1s_cute_D0_yo7_L0ve_t0MoRIN?}`
 
 網頁點進去是一個簡單的 file server
 
-![image](https://hackmd.io/_uploads/HJPUw64zxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image40.png)
 
 
 看程式碼發現如果訪問 /flag 會 redirect 到 `https://youtu.be/lQuWN0biOBU?si=SijTXQCn9V3j4Rl6`，所以使用 `%2f` 繞過，`http://chals1.ais3.org:30000/%2fflag`
 
-![image](https://hackmd.io/_uploads/H1zuDpEfgg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image41.png)
 
 ### Login Screen 1
 
-![image](https://hackmd.io/_uploads/By4nvpNMgx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image42.png)
 
 flag: `AIS3{1.Es55y_SQL_1nJ3ct10n_w1th_2fa_IuABDADGeP0}`
 
 點進去發現可以用 guest/guest 登入，直接登入
 
-![image](https://hackmd.io/_uploads/ByvgOTNGgx.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image43.png)
 
 登入之後需要 2fa，一樣使用 guest 的 2fa
 
-![image](https://hackmd.io/_uploads/SyNfuaVMxl.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image44.png)
 
 會發現只有 admin 可以看 flag
 
-![image](https://hackmd.io/_uploads/SkK4dp4zxg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image45.png)
 
 由此可以猜想應該有個 username 是 admin，另外密碼直接猜測弱密碼 admin 之後發現可以登入，但還是需要 2fa，觀察檔案會發現會有一個 users.db 儲存資訊，加上網址感覺可以直接讀檔案，所以直接嘗試 users.db，發現可以成功下載
 
-![image](https://hackmd.io/_uploads/HyYgY6Ezel.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image46.png)
 
 讀取 users.db 會發現有個 table 是 users，再看內容會發現應該分別是儲存帳號、密碼、2fa code
 
-![image](https://hackmd.io/_uploads/HJf1qTNfeg.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image47.png)
 
 輸入 admin 的 2fa code 即可獲得 flag
 
-![image](https://hackmd.io/_uploads/rJbWq6VGle.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image48.png)
 
 
 ### Login Screen 2
 
-![image](https://hackmd.io/_uploads/rkOjcpEzge.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image49.png)
 
 flag: `AIS3{2.Nyan_Nyan_File_upload_jWvuUeUyyKU}`
 
@@ -706,7 +706,7 @@ services:
 
 觀察 index.php 會發現 username 的值會直接被串接進去 SQL 裡面，並且不會事先經過任何處理，所以有 sql injection 風險
 
-![image](https://hackmd.io/_uploads/Bky4oTEzle.png)
+![image](/images/ais3-pre-exam-2025/ais3-pre-exam-2025_image50.png)
 
 所以可以透過這邊去做 sql injection 再 RCE 把 flag 寫在可以造訪的到的檔案，不過這邊因為我沒有到擅長 web 因此 payload 部分是使用 AI 構建的，Login Screen 1、2 解題 script 如下
 

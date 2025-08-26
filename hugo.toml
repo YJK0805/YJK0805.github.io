@@ -71,17 +71,14 @@ isCaseSensitive = false
 shouldSort = true
 location = 0
 distance = 1000
-threshold = 0.4
-minMatchCharLength = 2
-ignoreLocation = true
+threshold = 0.2
+minMatchCharLength = 3
+ignoreLocation = false
 findAllMatches = false
 includeScore = false
 keys = [
   {name = "title", weight = 1.0},
-  {name = "tags", weight = 0.7},
-  {name = "categories", weight = 0.5},
-  {name = "summary", weight = 0.3},
-  {name = "content", weight = 0.1}
+  {name = "content", weight = 0.8}
 ]
 
 # 社交連結
@@ -136,6 +133,22 @@ url = "/about/"
 weight = 40
 
 # 輸出格式設定
+# 語法高亮設定
+[markup]
+[markup.highlight]
+style = "monokai"
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_Lines = ""
+lineAnchors = ""
+lineNoStart = 1
+lineNos = true
+lineNumbersInTable = false
+noClasses = true
+noHl = false
+tabWidth = 4
+
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 page = ["HTML"]

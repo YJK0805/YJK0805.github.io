@@ -40,7 +40,7 @@ TocOpen: false
 
 查看以下程式原始碼
 
-```c=
+```c
 #include<stdio.h>
 int main(){
     setvbuf(stdout, 0, 2, 0);
@@ -60,7 +60,7 @@ int main(){
 
 使用以下指令進行編譯
 
-```sh=
+```bash
 gcc ./src/bof.c -o ./bof/share/bof -fno-stack-protector
 ```
 
@@ -92,7 +92,7 @@ gcc ./src/bof.c -o ./bof/share/bof -fno-stack-protector
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 # r = process('./bof')
 r = remote('127.0.0.1', 10000)

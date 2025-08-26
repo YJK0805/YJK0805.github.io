@@ -32,7 +32,7 @@ TocOpen: false
 
 查看以下程式原始碼：
 
-```c=
+```c
 #include<stdio.h>
 
 void shell(){
@@ -52,7 +52,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/ret2code.c -o ./ret2code/share/ret2code -fno-stack-protector -no-pie
 ```
 
@@ -87,7 +87,7 @@ gcc src/ret2code.c -o ./ret2code/share/ret2code -fno-stack-protector -no-pie
 
 現在我們可以開始編寫 exploit。我們將測試 local 端程式，輸入 `0xa + 8` 個字元，並在後面加上要修改的 return address：
 
-```py=
+```python
 from pwn import *
 
 r = process('../ret2code/share/ret2code')
@@ -105,7 +105,7 @@ r.interactive()
 
 將 exploit 加上 `gdb.attach()` 並使用 `tmux` 開啟另一個視窗。`gdb.attach()` 可以指定啟動時要執行的 gdb 指令，例如設置中斷點。
 
-```py=
+```python
 from pwn import *
 
 r = process('../ret2code/share/ret2code')
@@ -134,7 +134,7 @@ r.interactive()
 
 將 exploit 改為跳轉到 `0x401157`，並移除剛剛的 `gdb` 部分。
 
-```py=
+```python
 from pwn import *
 
 r = process('../ret2code/share/ret2code')
@@ -154,7 +154,7 @@ r.interactive()
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 
 # r = process('../ret2code/share/ret2code')

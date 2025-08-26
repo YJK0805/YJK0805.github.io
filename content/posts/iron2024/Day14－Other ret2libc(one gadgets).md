@@ -32,7 +32,7 @@ gem install one_gadget
 ```
 安裝完成後，只需要針對 libc 找出可用的 one gadget，指令如下：
 
-```sh=
+```bash
 one_gadget <libc file>
 ```
 
@@ -46,7 +46,7 @@ one_gadget <libc file>
 
 查看以下原始碼：
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -95,7 +95,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```sh=
+```bash
 gcc src/ret2libc_adv.c -o ./ret2libc_adv/share/ret2libc_adv -fno-stack-protector
 ```
 
@@ -111,13 +111,13 @@ gcc src/ret2libc_adv.c -o ./ret2libc_adv/share/ret2libc_adv -fno-stack-protector
 
 接下來，我們寫一個簡單的 script 來確認條件，看看能使用哪個 gadget。在測試之前，記得依照昨天的方式換 `libc`，指令如下：
 
-```sh=
+```bash
 patchelf --replace-needed libc.so.6 ./libc.so.6 --set-interpreter ./ld-linux-x86-64.so.2 ./ret2libc_adv
 ```
 
 然後寫測試的 script 並掛上 `gdb`：
 
-```py=
+```python
 from pwn import *
 
 r = process('./ret2libc_adv')
@@ -153,7 +153,7 @@ r.interactive()
 
 完整 exploit：
 
-```py=
+```python
 from pwn import *
 
 # r = process('./ret2libc_adv')

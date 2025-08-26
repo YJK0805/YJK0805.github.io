@@ -30,7 +30,7 @@ TocOpen: false
 
 以下是 GLIBC 2.35 關於 `struct malloc_state` 的程式碼：
 
-```c=
+```c
 struct malloc_state
 {
   /* Serialize access.  */

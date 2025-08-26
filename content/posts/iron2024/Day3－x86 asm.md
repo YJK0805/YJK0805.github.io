@@ -104,7 +104,7 @@ mov rbp, rsp
 pop rbp
 ```
 AT&T
-```asm=
+```asm
 push %rbp
 mov %rsp,%rbp
 pop %rbp

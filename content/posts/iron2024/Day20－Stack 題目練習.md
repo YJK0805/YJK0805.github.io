@@ -20,7 +20,7 @@ TocOpen: false
 
 查看以下原始碼：
 
-```c=
+```c
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
@@ -72,7 +72,7 @@ int main(){
 
 使用以下指令進行編譯：
 
-```bash=
+```bash
 gcc src/online_shopping.c -o ./online_shopping/share/online_shopping -fstack-protector-all -z now
 ```
 
@@ -89,7 +89,7 @@ gcc src/online_shopping.c -o ./online_shopping/share/online_shopping -fstack-pro
 
 以下是簡單的 script：
 
-```py=
+```python
 from pwn import *
 r = process('./online_shopping')
 context.terminal = ['tmux', 'splitw', '-h']
@@ -113,7 +113,7 @@ r.interactive()
 
 以下是驗證的 script：
 
-```py=
+```python
 from pwn import *
 import sys
 r = process('./online_shopping')
@@ -145,7 +145,7 @@ r.interactive()
 
 要記得我們在 rbp 前要填入我們所 leak 到的 canary，不然程式會 crash，另外，可以將 rbp 填入 libc 的 bss 段，因為我們沒有事先 leak pie
 
-```py=
+```python
 from pwn import *
 import sys
 # r = process('../online_shopping/share/online_shopping')
