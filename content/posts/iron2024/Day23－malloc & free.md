@@ -1,8 +1,8 @@
 ---
 title: "Day23－malloc & free"
-date: 2024-09-23
+date: 2024-10-07
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

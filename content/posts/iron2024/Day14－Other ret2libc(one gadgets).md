@@ -1,8 +1,8 @@
 ---
 title: "Day14－Other ret2libc(one gadgets)"
-date: 2024-09-14
+date: 2024-09-28
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

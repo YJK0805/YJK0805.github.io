@@ -1,8 +1,8 @@
 ---
 title: "Day29－Shrink the chunk"
-date: 2024-09-29
+date: 2024-10-13
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

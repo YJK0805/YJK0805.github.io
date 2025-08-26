@@ -1,8 +1,8 @@
 ---
 title: "Day18－Stack Pivoting"
-date: 2024-09-18
+date: 2024-10-02
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

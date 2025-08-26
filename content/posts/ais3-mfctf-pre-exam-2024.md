@@ -1,8 +1,8 @@
 ---
 title: "AIS3 mfctf & pre-exam 2024 writeup"
-date: 2024-07-15
+date: 2024-07-01
 draft: false
-tags: ["CTF", "AIS3", "writeup", "pwn", "reverse", "web", "misc", "angr", "rop", "2024", "competition"]
+tags: ["CTF", "AIS3", "writeup", "pwn", "reverse", "web", "misc", "2024", "competition"]
 categories: ["CTF", "Competition Writeup"]
 author: "YJK"
 showToc: true

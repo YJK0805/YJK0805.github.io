@@ -1,8 +1,8 @@
 ---
 title: "Day20－Stack 題目練習"
-date: 2024-09-20
+date: 2024-10-04
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

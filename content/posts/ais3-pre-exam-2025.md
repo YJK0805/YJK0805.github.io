@@ -1,6 +1,6 @@
 ---
 title: "AIS3 Pre-exam 2025 writeup"
-date: 2025-05-24
+date: 2025-07-01
 draft: false
 tags: ["CTF", "AIS3", "writeup", "pwn", "reverse", "web", "misc", "2025", "competition"]
 categories: ["CTF", "Competition Writeup"]

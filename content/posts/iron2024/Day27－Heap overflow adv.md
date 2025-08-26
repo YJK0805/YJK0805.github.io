@@ -1,8 +1,8 @@
 ---
 title: "Day27－Heap overflow adv"
-date: 2024-09-27
+date: 2024-10-11
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

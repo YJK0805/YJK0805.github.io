@@ -1,8 +1,8 @@
 ---
 title: "Day16－PLT to Libc"
-date: 2024-09-16
+date: 2024-09-30
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

@@ -1,8 +1,8 @@
 ---
 title: "Day7－ret2code (ret2func)"
-date: 2024-09-07
+date: 2024-09-21
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

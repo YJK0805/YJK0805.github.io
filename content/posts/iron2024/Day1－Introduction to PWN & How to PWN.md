@@ -1,8 +1,8 @@
 ---
 title: "Day1－Introduction to PWN & How to PWN"
-date: 2024-09-01
+date: 2024-09-15
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

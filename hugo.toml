@@ -9,7 +9,7 @@ env = "production"
 description = "專精於漏洞研究、CTF 競賽和資安技術分享的個人部落格"
 keywords = ["資安", "CVE", "CTF", "漏洞分析", "滲透測試", "逆向工程"]
 author = "YJK"
-DateFormat = "2004-08-05"
+DateFormat = "2006-01-02"
 
 # 功能設定
 ShowCodeCopyButtons = true

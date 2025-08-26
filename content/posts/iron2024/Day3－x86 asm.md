@@ -1,8 +1,8 @@
 ---
 title: "Day3－x86 asm"
-date: 2024-09-03
+date: 2024-09-17
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

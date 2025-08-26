@@ -1,8 +1,8 @@
 ---
 title: "Day22－Heap 名詞介紹"
-date: 2024-09-22
+date: 2024-10-06
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

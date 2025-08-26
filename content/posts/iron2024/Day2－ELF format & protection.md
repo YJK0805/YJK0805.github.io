@@ -1,8 +1,8 @@
 ---
 title: "Day2－ELF format & protection"
-date: 2024-09-02
+date: 2024-09-16
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true

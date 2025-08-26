@@ -1,8 +1,8 @@
 ---
 title: "Day24－Use After Free"
-date: 2024-09-24
+date: 2024-10-08
 draft: false
-tags: ["iron-man-2024", "pwn", "binary-exploitation"]
+tags: ["iron-man-2024", "pwn", "2024"]
 categories: ["security-research"]
 author: "YJK"
 showToc: true
