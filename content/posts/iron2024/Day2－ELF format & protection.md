@@ -87,7 +87,7 @@ int main(){
           ```
     - 分辨有無開啟
         - 後面會講到如何 disassemble 程式，如果 disassemble 有 call 到以下 plt 表就代表該 function 有 canary
-        - ![image](https://hackmd.io/_uploads/HyZ1b16s0.png)
+        - ![image](/images/iron2024/day2_image1.png)
 - RELRO (Relocation Read-Only)
     - 為了防範 Lazy Binding 問題
     - 分為 No / Partial / Full 三種模式
@@ -111,4 +111,4 @@ int main(){
 
 - checksec
 
-![image](https://hackmd.io/_uploads/SyB3I54aR.png)
+![image](/images/iron2024/day2_image2.png)

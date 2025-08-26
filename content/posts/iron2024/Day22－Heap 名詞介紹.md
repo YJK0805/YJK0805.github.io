@@ -30,7 +30,7 @@ allocated chunk 的特殊之處在於當前一塊 chunk 是 free 狀態時，all
 
 allocated chunk 的結構如下圖所示：
 
-![image](https://hackmd.io/_uploads/HyKfilkyyx.png)
+![image](/images/iron2024/day22_image1.png)
 
 ### freed chunk
 
@@ -43,7 +43,7 @@ allocated chunk 的結構如下圖所示：
 
 freed chunk 的結構如下圖所示：
 
-![image](https://hackmd.io/_uploads/Bkl-sxJyye.png)
+![image](/images/iron2024/day22_image2.png)
 
 ### top chunk
 

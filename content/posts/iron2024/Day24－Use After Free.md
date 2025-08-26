@@ -217,9 +217,9 @@ r.interactive()
 
 使用 heap 指令觀察記憶體分佈，會看到分配了大小、function pointer 和 data 等數據。
 
-![image](https://hackmd.io/_uploads/BJMqvc-11x.png)
+![image](/images/iron2024/day24_image1.png)
 
-![image](https://hackmd.io/_uploads/rkA7O5Wykl.png)
+![image](/images/iron2024/day24_image2.png)
 
 接下來，我們嘗試釋放這兩塊記憶體，並繼續觀察：
 
@@ -253,7 +253,7 @@ r.interactive()
 
 當空間被釋放後，可以觀察到該空間進入了 tcache bins。我們可以嘗試拿到 index 為 0 的 Note 的 function pointer 空間，進行測試：
 
-![image](https://hackmd.io/_uploads/ByJxcqbJJe.png)
+![image](/images/iron2024/day24_image3.png)
 
 此時我們使用簡單的 script 會發現可以覆蓋原本的 function pointer。如果我們再 print 這個 note 的 content，就能控制執行流程。
 
@@ -288,13 +288,13 @@ r.interactive()
 
 查看狀況會發現確實蓋到了原本的 function pointer
 
-![image](https://hackmd.io/_uploads/HJWficbJkg.png)
+![image](/images/iron2024/day24_image4.png)
 
 此時如果去 print 那一塊 note 的 content 就會呼叫到此 function pointer，所以我們可以藉此控制執行流程
 
 那程式中有一個後門函式，我們可以使用 objdump 來確認其位址，發現後門在 0x4015c8。我們可以將這個地址寫入 function pointer，並成功打開 shell。
 
-![image](https://hackmd.io/_uploads/SkNKo5-11e.png)
+![image](/images/iron2024/day24_image5.png)
 
 所以我們將 address 填入，並且在 print 出內容，這樣就可以成功開啟 shell 了
 
@@ -332,7 +332,7 @@ r.interactive()
 
 solved!!!
 
-![image](https://hackmd.io/_uploads/ByCfncWyJe.png)
+![image](/images/iron2024/day24_image6.png)
 
 ## 結論
 

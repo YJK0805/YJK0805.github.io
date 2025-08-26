@@ -18,7 +18,7 @@ TocOpen: false
 
 根據之前提到的編譯過程，經過簡化後，最終會變成下圖所示的形式：
 
-![image](https://hackmd.io/_uploads/ryhpvmD6C.png)
+![image](/images/iron2024/day11_image1.png)
 
 簡單來說，最後真正執行的部分是機器碼，而這正是本章節要教授的內容：Shellcode。之所以稱為 Shellcode，是因為我們透過編寫 Assembly 程式碼，將參數寫入指定的位置，並最終呼叫 `syscall`，來達成我們的目標，例如開啟 shell 或讀取特定檔案。
 
@@ -89,11 +89,11 @@ gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 
 前面提到我們可以使用 `pwntools` 的 `shellcraft` 產生 Shellcode，但需要注意的是，`shellcraft` 產生的 Shellcode 有時候可能會過長，這時就可能需要使用 `shellcode database` 或自行撰寫短一點的 Shellcode，來符合題目對字元數量的限制。例如，以下的 AMD64 開啟 shell 的 Shellcode 長度為 48 字節，已經足夠應付這道題目。
 
-![image](https://hackmd.io/_uploads/HJ4qY4v6C.png)
+![image](/images/iron2024/day11_image2.png)
 
 接下來，我們需要確定如何找到 `shellcode` 變數的位址。你可以使用 `objdump` 來查看，但這裡我使用另一個工具 `nm`，它可以顯示檔案的符號資訊。透過執行 `nm ret2sc | grep "shellcode"`，可以輕鬆得知 `shellcode` 的位址為 `0x404080`。
 
-![image](https://hackmd.io/_uploads/rJxU9VvTR.png)
+![image](/images/iron2024/day11_image3.png)
 
 到此為止，我們已經掌握了所有獲取 Shell 的關鍵資訊，接下來可以開始撰寫 Exploit。
 
@@ -116,4 +116,4 @@ r.interactive()
 
 solved！！
 
-![image](https://hackmd.io/_uploads/B1ALi4wTA.png)
+![image](/images/iron2024/day11_image4.png)

@@ -67,7 +67,7 @@ gcc src/ret2plt_adv.c -o ./ret2plt_adv/share/ret2plt_adv -fno-stack-protector -n
 
 這些資訊可以用 `objdump` 輕鬆找出。
 
-![image](https://hackmd.io/_uploads/B1A_hcH0R.png)
+![image](/images/iron2024/day16_image1.png)
 
 我們來測試一下是否能成功泄露 libc 地址，並接上 gdb 計算 offset。
 
@@ -75,7 +75,7 @@ gcc src/ret2plt_adv.c -o ./ret2plt_adv/share/ret2plt_adv -fno-stack-protector -n
 
 需要控制流的 padding 為 `0x10+0x8=0x18`。
 
-![image](https://hackmd.io/_uploads/SykCeoS00.png)
+![image](/images/iron2024/day16_image2.png)
 
 接下來，使用以下 script 進行測試：
 
@@ -98,13 +98,13 @@ r.interactive()
 
 我們可以成功泄露一些資訊，並確認 offset 為 `0x815f0`。
 
-![image](https://hackmd.io/_uploads/BJy61jBAA.png)
+![image](/images/iron2024/day16_image3.png)
 
-![image](https://hackmd.io/_uploads/ry7klsBC0.png)
+![image](/images/iron2024/day16_image4.png)
 
 接下來，將泄露到的地址減去 `0x815f0` 來測試，發現確實成功泄露到 libc base。
 
-![image](https://hackmd.io/_uploads/Hk3Deir00.png)
+![image](/images/iron2024/day16_image5.png)
 
 由於程式最後接回了 `main`，因此有再次輸入的機會，此時就可以進行 ret2libc，具體步驟可參考 [Day13－How to change libc & ret2libc](https://ithelp.ithome.com.tw/articles/10359126) 的步驟
 
@@ -133,4 +133,4 @@ r.interactive()
 
 solved！！
 
-![image](https://hackmd.io/_uploads/HyDobjr0C.png)
+![image](/images/iron2024/day16_image6.png)

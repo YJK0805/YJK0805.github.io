@@ -36,7 +36,7 @@ gem install one_gadget
 one_gadget <libc file>
 ```
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008K62FYkI6ok.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008K62FYkI6ok.png)
+![image](/images/iron2024/day14_image1.png)
 
 可以看到工具會列出各個 gadget 的限制條件，因此需要滿足這些條件，像是 `rbp` 的值或其他 register 的位置。通常我不會過於在意這些限制條件，只要 `rbp` 符合條件即可，比如符合 `rbp-0x78`、`rbp-0x48` 或 `rbp-0x50` 是可寫的。
 
@@ -103,11 +103,11 @@ gcc src/ret2libc_adv.c -o ./ret2libc_adv/share/ret2libc_adv -fno-stack-protector
 
 相比昨天的 Lab，這次的 `read` 可以 overflow 的部分變小了，但其餘部分相同，仍然可以通過越界讀取來 leak `libc base`。查看反組譯碼會發現能 overflow 的位置只有到 `rbp` 和 return address，因此非常適合使用 one gadget。
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008yFlNWJ4fsb.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008yFlNWJ4fsb.png)
+![image](/images/iron2024/day14_image2.png)
 
 使用 one gadget 找到的 gadget 如下：
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008xQ14w6zHq1.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008xQ14w6zHq1.png)
+![image](/images/iron2024/day14_image3.png)
 
 接下來，我們寫一個簡單的 script 來確認條件，看看能使用哪個 gadget。在測試之前，記得依照昨天的方式換 `libc`，指令如下：
 
@@ -137,19 +137,19 @@ r.interactive()
 
 執行後，在 return address 觀察 `register` 的狀態以及應該填充的 `rbp` 值：
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008j5bZxryD0j.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008j5bZxryD0j.png)
+![image](/images/iron2024/day14_image4.png)
 
 既然我們已經有了 `libc base address`，就可以查看 `libc` 的可寫段：
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008SKTzE0UFRl.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008SKTzE0UFRl.png)
+![image](/images/iron2024/day14_image5.png)
 
 我通常習慣從最尾端找起，使用指令 `x/30gx 0x7f83a8e81000-0x78`，發現大多區域都是可寫的。
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008RHzLZkwxaz.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008RHzLZkwxaz.png)
+![image](/images/iron2024/day14_image6.png)
 
 回到剛才找到的 one gadget，最後一個 gadget 的 offset 是 `0xebd43`，看起來條件符合。我們將 `rbp` 填入之前找到的可寫區段（記得加上 offset 和 `libc address`）。
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/201630089bSMLV125H.png](https://ithelp.ithome.com.tw/upload/images/20240928/201630089bSMLV125H.png)
+![image](/images/iron2024/day14_image7.png)
 
 完整 exploit：
 
@@ -173,4 +173,4 @@ r.interactive()
 
 solved！！
 
-![https://ithelp.ithome.com.tw/upload/images/20240928/20163008xk4D3e0K7n.png](https://ithelp.ithome.com.tw/upload/images/20240928/20163008xk4D3e0K7n.png)
+![image](/images/iron2024/day14_image8.png)

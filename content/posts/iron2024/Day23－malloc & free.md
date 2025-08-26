@@ -33,7 +33,7 @@ TocOpen: false
 
 以下為簡化的流程圖：
 
-![malloc](https://hackmd.io/_uploads/Bkwu-7x1ye.png)
+![malloc](/images/iron2024/day23_image1.png)
 
 不過這其實是較早期的 malloc 流程，隨著 glibc 的更新，現在的流程有所不同，因為加入了一些 struct 與一些機制。
 

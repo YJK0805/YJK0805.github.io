@@ -14,7 +14,7 @@ TocOpen: false
 
 如果大家經常使用 `file` 指令來查看檔案資訊，應該會經常看到像下面這樣的一大串訊息：
 
-![image](https://hackmd.io/_uploads/BJGUhma3R.png)
+![image](/images/iron2024/day9_image1.png)
 
 你會注意到其中有一個資訊是 `dynamically linked`，這表示這是一個動態鏈結的程式。動態鏈結意味著程式在執行時，會從外部函式庫載入一些函式，例如常見的 `printf`、`scanf` 等。
 
@@ -30,9 +30,9 @@ Lazy binding 的機制是在程式首次呼叫某個函式時，系統才會查�
 
 例如，在下方的反編譯程式碼中，我們看到在 `main` 函式中呼叫了 `printf@plt`，而 `printf@plt` 最終會跳轉到 `printf@GLIBC_2.2.5`，也就是實際在 libc 中的 `printf` 函式。
 
-![image](https://hackmd.io/_uploads/SyPfCEanA.png)
+![image](/images/iron2024/day9_image2.png)
 
-![image](https://hackmd.io/_uploads/SJ0ZCEphC.png)
+![image](/images/iron2024/day9_image3.png)
 
 ## 攻擊？
 

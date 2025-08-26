@@ -20,27 +20,27 @@ TocOpen: false
 
 - 執行 `docker-compose up -d`
 
-![image](https://hackmd.io/_uploads/HJwSFnpT0.png)
+![image](/images/iron2024/day13_image1.png)
 
 - 執行 `docker ps` 並記下容器的 `ID`
 
-![image](https://hackmd.io/_uploads/ryAPY2p6R.png)
+![image](/images/iron2024/day13_image2.png)
 
 - 使用 `docker exec -it [ID] /bin/bash` 進入容器
 
-![image](https://hackmd.io/_uploads/SJzaKnpT0.png)
+![image](/images/iron2024/day13_image3.png)
 
 - 使用 `ldd` 確認 `libc` 路徑與檔名
 
-![image](https://hackmd.io/_uploads/BkNl5naaR.png)
+![image](/images/iron2024/day13_image4.png)
 
 - 使用 `docker cp [ID]:[檔案路徑] .` 將檔案從容器中複製到本地
 
-![image](https://hackmd.io/_uploads/SyTq53a6A.png)
+![image](/images/iron2024/day13_image5.png)
 
 - 使用 `ls -al` 會發現 `ld-linux-x86-64.so.2` 其實是連結到另一個檔案，因此需要再多複製一次
 
-![image](https://hackmd.io/_uploads/SkvlsnapA.png)
+![image](/images/iron2024/day13_image6.png)
 
 接下來，我們需要使用 [patchelf](https://github.com/NixOS/patchelf) 來修改 ELF 檔案。下載 patchelf 後，執行以下命令進行 patch：
 
@@ -52,7 +52,7 @@ TocOpen: false
 
 可以再次使用 `ldd` 確認是否已正確修改：
 
-![image](https://hackmd.io/_uploads/HJG9hnaaC.png)
+![image](/images/iron2024/day13_image7.png)
 
 ## ret2libc
 
@@ -155,15 +155,15 @@ r.interactive()
 
 當執行到 Index: 11 到 Index: 20 之間時，我們可以發現一些有趣的資訊：
 
-![image](https://hackmd.io/_uploads/ryXv_aa6R.png)
+![image](/images/iron2024/day13_image8.png)
 
 接下來，我們使用 `libc` 指令來查看 `libc` 的 base address：
 
-![image](https://hackmd.io/_uploads/ry_YOTTTA.png)
+![image](/images/iron2024/day13_image9.png)
 
 發現 `Index 11` 的位址與 `libc` 的 base address 只差 `0x29d90`。為了驗證，我們修改 script：
 
-![image](https://hackmd.io/_uploads/rJOCOpTTC.png)
+![image](/images/iron2024/day13_image10.png)
 
 ```py=
 from pwn import *
@@ -184,7 +184,7 @@ r.interactive()
 
 執行會發現確實可以得到 libc 的 base address
 
-![image](https://hackmd.io/_uploads/rJIfqTTpC.png)
+![image](/images/iron2024/day13_image11.png)
 
 拿到 base address 後就可以像昨天的內容一樣開始找 gadgets 和疊出可以開 shell 的 chain 了，並且由上述內容可以發現我們會需要
 
@@ -194,21 +194,21 @@ r.interactive()
 
 首先一樣先用 `ROPGadget` 找出所有 gadgets，`ROPgadget --binary libc.so.6 > libc_gadgets`，接下來找出 gadgets，要注意這些 gadgets 使用上皆必須加上 base address
 
-![image](https://hackmd.io/_uploads/ByXysaaaC.png)
+![image](/images/iron2024/day13_image12.png)
 
 然後使用 `strings -a -t x <path to libc> | grep /bin/sh` 找出字串位址
 
-![image](https://hackmd.io/_uploads/By9Qsp6aR.png)
+![image](/images/iron2024/day13_image13.png)
 
 system 的 offset 可以使用 gdb 將程式執行起來再使用 `off system` 找，不過這邊在下中斷點會發現不能在 main 下中斷點了，因為有進行 patch 過，不過我們可以透過在 printf 下中斷點再執行(`b printf`)，接下來 `r` 執行，然後 `off system`，即可得到 offset
 
-![image](https://hackmd.io/_uploads/Bk4G2aa6R.png)
+![image](/images/iron2024/day13_image14.png)
 
 所以接下來只需要找到要先填多少的 padding 才能 control flow 即可開始寫 exploit
 
 這邊使用 objdump 查找，`objdump -M intel -d ret2libc`，會發現會從 `rbp-0x70` 開始讀入 `0x100` 的字串
 
-![image](https://hackmd.io/_uploads/BJGEappTA.png)
+![image](/images/iron2024/day13_image15.png)
 
 所以我們在 control flow 前會先需要填充 0x70+0x8(save rbp)，才會開始覆蓋到 return address
 
@@ -240,13 +240,13 @@ r.interactive()
 ```
 
 不過執行起來會發現發生了 SIGSEGV，可能需要接上 gdb 查看狀況
-![image](https://hackmd.io/_uploads/BkuAaa660.png)
+![image](/images/iron2024/day13_image16.png)
 
 執行到 return address 的部分會發現我們確實成功控制了執行流程，不過繼續看下去會發現又會停在 movaps xmmword ptr、not aligned to 16 bytes 的部分，那這邊通常會直接接上一個 ret 讓他可以對齊，那會發現 pop_rdi 事實上是 pop rdi ; ret，所以我們可以直接用 pop_rdi + 1 即可獲得 ret
 
-![image](https://hackmd.io/_uploads/SyVvApppC.png)
+![image](/images/iron2024/day13_image17.png)
 
-![image](https://hackmd.io/_uploads/r13YApT6R.png)
+![image](/images/iron2024/day13_image18.png)
 
 加上 ret 後會像是這樣
 
@@ -278,7 +278,7 @@ r.interactive()
 
 執行後會發現在 local 端可以確實拿到 shell，所以原則上可以將題目架起來並連上遠端拿到 flag 了
 
-![image](https://hackmd.io/_uploads/By5U1CaaC.png)
+![image](/images/iron2024/day13_image19.png)
 
 完整 exploit：
 
@@ -306,4 +306,4 @@ r.interactive()
 
 solved！！
 
-![image](https://hackmd.io/_uploads/HJq61RTTR.png)
+![image](/images/iron2024/day13_image20.png)

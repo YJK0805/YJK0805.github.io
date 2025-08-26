@@ -20,17 +20,17 @@ TocOpen: false
 
 - `write(1, "ret2plt", 7)` 在 stack 上的狀況會是：
 
-![image](https://hackmd.io/_uploads/HyhP4cl0R.png)
+![image](/images/iron2024/day15_image1.png)
 
 - `puts("ret2plt")` 在 stack 上的狀況會是：
 
-![image](https://hackmd.io/_uploads/S1eWnKl00.png)
+![image](/images/iron2024/day15_image2.png)
 
 這些例子中，實際上都是輸出 "ret2plt" 這個字串。如果有可以利用的 PLT 表，就可以用更短的 chain 完成，而不需要尋找過多可用的 gadgets。類似的：
 
 - `system("/bin/sh")` 在 stack 上的狀況會是：
 
-![image](https://hackmd.io/_uploads/BkB16txRR.png)
+![image](/images/iron2024/day15_image3.png)
 
 這代表我們可以先透過 `gets` 或其他可以寫入的 PLT 將資料寫進可寫區域，然後把該區域當作 `system@plt` 的參數，這樣就可以將 `/bin/sh` 或 `sh` 寫入並呼叫 `system@plt`。如此一來，便能開啟 shell。
 
@@ -78,21 +78,21 @@ gcc src/ret2plt.c -o ./ret2plt/share/ret2plt -fno-stack-protector -no-pie
 
 首先，使用 GDB 查看可以寫入的區域。我們可以先執行 `gdb ./ret2plt`，然後設置中斷點 `b main`，執行 `r`，再使用 `vmmap` 查看程式的記憶體區塊。會發現 0x404000~0x405000 之間是可寫的區域。接著，我們可以從後面開始檢查，如 `x/10gx 0x405000-0x100`，發現這些地方沒有被寫入。因此，我們可以選擇 0x404f00 作為寫入位置。
 
-![image](https://hackmd.io/_uploads/H1kFdql00.png)
+![image](/images/iron2024/day15_image4.png)
 
-![image](https://hackmd.io/_uploads/HkVeKql0R.png)
+![image](/images/iron2024/day15_image5.png)
 
 接著，我們需要使用 `pop rdi` 將要輸入的位置傳遞給 `gets`，這可以透過 `ROPgadget --binary ret2plt | grep "pop rdi"` 找到。我們發現 0x40115a 是 `pop rdi; ret`。
 
-![image](https://hackmd.io/_uploads/HJkdK9e00.png)
+![image](/images/iron2024/day15_image6.png)
 
 接著，使用 `objdump` 查看 `gets@plt` 和 `system@plt` 的地址，輸入 `objdump -M intel -d ret2plt`。結果顯示 `gets@plt` 在 0x401050，`system@plt` 在 0x401030。同時，我們還要確認 padding 的大小，發現輸入會從 `rbp-0x10` 開始，因此 padding 是 `0x10+0x8=0x18`。
 
-![image](https://hackmd.io/_uploads/rJ_Jq9gC0.png)
+![image](/images/iron2024/day15_image7.png)
 
-![image](https://hackmd.io/_uploads/BJGe99eAR.png)
+![image](/images/iron2024/day15_image8.png)
 
-![image](https://hackmd.io/_uploads/rk8Eq9xA0.png)
+![image](/images/iron2024/day15_image9.png)
 
 資訊確認完畢後，我們可以開始撰寫 exploit。
 
@@ -120,4 +120,4 @@ r.interactive()
 
 solve！！
 
-![image](https://hackmd.io/_uploads/BJoboqgRC.png)
+![image](/images/iron2024/day15_image10.png)

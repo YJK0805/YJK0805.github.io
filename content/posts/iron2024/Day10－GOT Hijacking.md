@@ -76,15 +76,15 @@ gcc src/got.c -o ./got/share/got -fno-stack-protector -no-pie
 
 這題相對簡單，因為可以使用 `objdump` 來 disassemble 程式，從中計算應該填入哪些位置。從 `main` 函數可以看到 `value` 陣列的位址是 0x404080。
 
-![image](https://hackmd.io/_uploads/HJUuzlCnA.png)
+![image](/images/iron2024/day10_image1.png)
 
 接下來我們需要找出該填入的位置與 `value` 陣列位址之間的差異。在這裡，我們選擇覆蓋 `puts` 函數，因為在寫入值之後會呼叫 `puts` 函數。確認一下 `puts` 的 GOT 位址是 0x404000，依此就能判斷應該覆蓋哪個索引。
 
-![image](https://hackmd.io/_uploads/rkMOQgAnR.png)
+![image](/images/iron2024/day10_image2.png)
 
 接著，我們要將 `backdoor` 函數的位址（0x401166）寫入。
 
-![image](https://hackmd.io/_uploads/rkfzNlCnA.png)
+![image](/images/iron2024/day10_image3.png)
 
 現在所有資訊都已經掌握，可以開始編寫 exploit。
 
@@ -109,4 +109,4 @@ r.interactive()
 
 solved！！
 
-![image](https://hackmd.io/_uploads/SkYnNl02C.png)
+![image](/images/iron2024/day10_image4.png)

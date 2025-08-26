@@ -20,11 +20,11 @@ TocOpen: false
 
 回顧之前的 stack 內容，當使用 `gets` 讀取 `buf` 字串時，可以持續覆蓋記憶體，甚至可能覆蓋到 `rbp` 和 `return address`
 
-![image](https://hackmd.io/_uploads/HJ0565Y20.png)
+![image](/images/iron2024/day7_image1.png)
 
 例如，如果我們想跳到名為 `shell` 或 `win` 的函數，可以嘗試將 stack 覆蓋成如圖所示的狀態。當程式執行到 return address 時，它就會跳轉到我們覆蓋的位置。
 
-![image](https://hackmd.io/_uploads/r19GRqKh0.png)
+![image](/images/iron2024/day7_image2.png)
 
 雖然在現實情況下，程式中不太可能直接有開啟 shell 的 function，但在一些初學者的 CTF 題目中，這類控制程式執行流程（control flow）的題目仍然存在。在進入實作之前，我們要了解這種攻擊的前提條件是：需要關閉 PIE 保護，因為我們必須知道確切要跳轉的 function 位置。
 
@@ -67,23 +67,23 @@ gcc src/ret2code.c -o ./ret2code/share/ret2code -fno-stack-protector -no-pie
 
 首先，找到覆蓋到 return address 前所需的字元數。我們可以使用 `objdump` 來 disassemble 程式，觀察指令 `lea rax,[rbp-0xa]`，這表示輸入的起始位置是 `[rbp-0xa]`。與前面不同的是，return address 前還有 8 個 bytes 的 `rbp`，所以需要填充的字元數是 `0xa + 0x8 = 0x12`，即 18 個字元。
 
-![image](https://hackmd.io/_uploads/SkxM-iKnA.png)
+![image](/images/iron2024/day7_image3.png)
 
 另一種方法是使用 `gdb` 來驗證。我們先使用 `gdb ./ret2code` 啟動程式，然後在 `main` function 處設置中斷點，接著 `r` 執行程式，並 `ni` 逐步執行至輸入位置。此時，我們可以輸入有規律的字元，觀察覆蓋情況。例如輸入 `AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJ`
 
-![image](https://hackmd.io/_uploads/Sk9KGjth0.png)
+![image](/images/iron2024/day7_image4.png)
 
 繼續執行至 return address 處，可以看到 return address 已被覆蓋為 `0x4747464646464545`，即 `EEFFFFGG`。因此，可以確定需要填充的字元數是 `AAAABBBBCCCCDDDDEE`，共 18 個字元。
 
-![image](https://hackmd.io/_uploads/HJBQBjth0.png)
+![image](/images/iron2024/day7_image5.png)
 
 `shell()` 的 address 可以使用 `objdump` 或 `gdb` 來查找。使用 `objdump`，我們可以看到地址為 `0x401156`。
 
-![image](https://hackmd.io/_uploads/B1ZRSjY2C.png)
+![image](/images/iron2024/day7_image6.png)
 
 使用 `gdb` 的 `info func` 命令，也可以看到 `shell()` function 位於 `0x401156`。
 
-![image](https://hackmd.io/_uploads/S1OGUjK2R.png)
+![image](/images/iron2024/day7_image7.png)
 
 現在我們可以開始編寫 exploit。我們將測試 local 端程式，輸入 `0xa + 8` 個字元，並在後面加上要修改的 return address：
 
@@ -101,7 +101,7 @@ r.interactive()
 
 不過執行後會發生 SIGSEGV，此時可以使用 `gdb` 來追蹤問題。
 
-![image](https://hackmd.io/_uploads/rk928jKnC.png)
+![image](/images/iron2024/day7_image8.png)
 
 將 exploit 加上 `gdb.attach()` 並使用 `tmux` 開啟另一個視窗。`gdb.attach()` 可以指定啟動時要執行的 gdb 指令，例如設置中斷點。
 
@@ -122,15 +122,15 @@ r.interactive()
 
 在 `tmux` 中執行 exploit，並讓執行位置回到 `main` function。
 
-![image](https://hackmd.io/_uploads/SJ3aOiYh0.png)
+![image](/images/iron2024/day7_image9.png)
 
 此時發現程式確實跳到 `shell()`，但遇到問題：`movaps xmmword ptr [rsp + 0x50], xmm0`，提示 `not aligned to 16 bytes`。這個問題可以參考這篇[文章](https://hack543.com/16-bytes-stack-alignment-movaps-issue/)，簡單來說，某些 libc 版本要求 `rsp` 的值必須是 16 的倍數。我們可以嘗試跳轉到前一點的位置。
 
-![image](https://hackmd.io/_uploads/HkvZKsFnC.png)
+![image](/images/iron2024/day7_image10.png)
 
 例如，跳轉到 `0x401157` 或其他位置進行測試。
 
-![image](https://hackmd.io/_uploads/H1tY9jFhA.png)
+![image](/images/iron2024/day7_image11.png)
 
 將 exploit 改為跳轉到 `0x401157`，並移除剛剛的 `gdb` 部分。
 
@@ -148,7 +148,7 @@ r.interactive()
 
 成功取得 shell！
 
-![image](https://hackmd.io/_uploads/rJXZojF3C.png)
+![image](/images/iron2024/day7_image12.png)
 
 接下來將題目架設起來，並連接到遠端。
 
@@ -168,4 +168,4 @@ r.interactive()
 
 solved！！
 
-![image](https://hackmd.io/_uploads/HkjNoiFnR.png)
+![image](/images/iron2024/day7_image13.png)

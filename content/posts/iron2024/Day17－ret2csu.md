@@ -22,7 +22,7 @@ TocOpen: false
 
 這是 `__libc_csu_init` 的部分內容：
 
-![image](https://hackmd.io/_uploads/rJwbI2LA0.png)
+![image](/images/iron2024/day17_image1.png)
 
 仔細觀察可以發現，最底下的這段程式碼非常適合用來放參數以及控制流程。
 

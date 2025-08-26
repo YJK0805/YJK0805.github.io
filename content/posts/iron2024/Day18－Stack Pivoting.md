@@ -37,13 +37,13 @@ Stack Pivoting 是將 ROP chain 分次寫在指定區域，最後將 stack 遷�
 
 如此一來，我們就可以控制執行流程，並且可以通過不斷遷移 stack 來達成任意的 ROP。
 
-![image](https://hackmd.io/_uploads/r1iGJiKAR.png)
+![image](/images/iron2024/day18_image1.png)
 
-![image](https://hackmd.io/_uploads/Skg7kotAR.png)
+![image](/images/iron2024/day18_image2.png)
 
-![image](https://hackmd.io/_uploads/B1_wmoYA0.png)
+![image](/images/iron2024/day18_image3.png)
 
-![image](https://hackmd.io/_uploads/ByTv7iYCA.png)
+![image](/images/iron2024/day18_image4.png)
 
 ## Lab
 
@@ -81,13 +81,13 @@ gcc src/stack_pivoting.c  -o ./stack_pivoting/share/stack_pivoting -fno-stack-pr
 
 在輸入是從 `rbp - 0x10` 輸入 0x20，因此可以 overflow 的空間為 0x20 - 0x10 = 0x10，剛好可以覆蓋 return address。
 
-![image](https://hackmd.io/_uploads/rkbt72YAR.png)
+![image](/images/iron2024/day18_image5.png)
 
 因為編譯參數使用了 `-static`，我們可以利用許多 gadgets 來進行 ROP。不能直接透過 return address 進行 ROP，但可以將 ROP chain 寫在 `name` 中，透過 stack pivoting 將程式流程轉移到 `name`，進而執行 ROP。
 
 確認 `name` 的位置：
 
-![image](https://hackmd.io/_uploads/BkD9_hKC0.png)
+![image](/images/iron2024/day18_image6.png)
 
 接下來可以參考[Day12－Basic ROP](https://ithelp.ithome.com.tw/articles/10358514)
 
@@ -131,4 +131,4 @@ r.interactive()
 
 solve!!!
 
-![image](https://hackmd.io/_uploads/HJaJq2YRR.png)
+![image](/images/iron2024/day18_image7.png)

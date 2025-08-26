@@ -95,14 +95,14 @@ networks:
 - 常用功能是反組譯程式
     - 使用 `objdump -M intel -d chal`，`-M intel` 指定架構為 Intel，`-d chal` 指定要反組譯的檔案為 `chal`
 
-![objdump](https://hackmd.io/_uploads/HkJ-QELn0.png)
+![objdump](/images/iron2024/day4_image1.png)
 
 ### checksec
 
 - 查看檔案開啟了哪些保護機制
 - Pwntools 內建此功能，也可以手動安裝 `checksec.sh`
 
-![checksec](https://hackmd.io/_uploads/B1GQXEI2C.png)
+![checksec](/images/iron2024/day4_image2.png)
 
 ### one_gadget
 
@@ -110,7 +110,7 @@ networks:
 - 用於 libc 的利用
 - 後續內容會進一步介紹
 
-![one_gadget](https://hackmd.io/_uploads/S1ZXuEL3A.png)
+![one_gadget](/images/iron2024/day4_image3.png)
 
 ### nc
 
@@ -122,16 +122,16 @@ networks:
 - 用來檢查程式的 seccomp 規則
 - 可以幫助了解應該撰寫什麼樣的 shellcode，或避免使用哪些函數
 
-![seccomp-tools](https://hackmd.io/_uploads/BJWSFEU3C.png)
+![seccomp-tools](/images/iron2024/day4_image4.png)
 
 ### ROPgadget、ropper
 
 - 這兩個工具用來列出 binary 中可以使用的 ROP gadgets
 - 也能幫助快速產出 ROP chain
 
-![ROPgadget](https://hackmd.io/_uploads/HkxXt4L30.png)
+![ROPgadget](/images/iron2024/day4_image5.png)
 
-![ropper](https://hackmd.io/_uploads/rkE4KEU2C.png)
+![ropper](/images/iron2024/day4_image6.png)
 
 ### gdb
 

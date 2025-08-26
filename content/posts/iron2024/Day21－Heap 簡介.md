@@ -22,7 +22,7 @@ TocOpen: false
 
 `malloc` 是用來分配記憶體的函數，基本原則是需要多少分配多少。這樣可以提升程式的記憶體分配效率，避免不必要的空間浪費。其實，`malloc` 的運作過程相當複雜，但若簡單整理，可以理解為：如果分配的 size $<$ 128KB，系統會呼叫 `brk` 來進行配置；相反，若 size $\ge$ 128KB，則會使用 `mmap` 進行分配。
 
-![image](https://hackmd.io/_uploads/HyGIr06A0.png)
+![image](/images/iron2024/day21_image1.png)
 
 ## main arena
 

@@ -105,11 +105,11 @@ r.interactive()
 
 執行後，可以看到第三個參數 offset 是 0x21aaa0，第九個參數是 canary。將 leak 的 payload 改為 `%3$p-%9$p` 以 leak 出 libc base 和 canary，並計算出 libc base。
 
-![image](https://hackmd.io/_uploads/S1hVOV3CC.png)
+![image](/images/iron2024/day20_image1.png)
 
-![image](https://hackmd.io/_uploads/BJeBuV2RR.png)
+![image](/images/iron2024/day20_image2.png)
 
-![image](https://hackmd.io/_uploads/ByvP_E20C.png)
+![image](/images/iron2024/day20_image3.png)
 
 以下是驗證的 script：
 
@@ -135,11 +135,11 @@ r.interactive()
 
 確認成功 leak 到 libc 和 canary。
 
-![image](https://hackmd.io/_uploads/rylNYNnAR.png)
+![image](/images/iron2024/day20_image4.png)
 
 接下來，我們嘗試控制程式流程。根據 objdump，我們知道從 rbp-0x20 開始輸入 0x30，因此只可以控制到 return address。由於我們已經 leak 出 libc base，接下來使用 one_gadgets 獲取 shell，具體可參考 [Day14－Other ret2libc(one gadgets)](https://ithelp.ithome.com.tw/articles/10359719)
 
-![image](https://hackmd.io/_uploads/ByK5YV3A0.png)
+![image](/images/iron2024/day20_image5.png)
 
 完整 exploit：
 
@@ -168,4 +168,4 @@ r.interactive()
 
 solved!!!
 
-![image](https://hackmd.io/_uploads/Hyr5qEh0R.png)
+![image](/images/iron2024/day20_image6.png)

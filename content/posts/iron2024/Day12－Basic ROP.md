@@ -39,19 +39,19 @@ gcc test.c -o dynamic
 
 可以發現 static 檔案的大小明顯大上許多。
 
-![image](https://hackmd.io/_uploads/Hkq2LDFT0.png)
+![image](/images/iron2024/day12_image1.png)
 
 `file static dynamic` 可以看到一個是 static linking，另一個是 dynamic linking。
 
-![image](https://hackmd.io/_uploads/HJwzPDYaR.png)
+![image](/images/iron2024/day12_image2.png)
 
 static 的 main function
 
-![image](https://hackmd.io/_uploads/rkKZ_DY6C.png)
+![image](/images/iron2024/day12_image3.png)
 
 dynamic 的 main function
 
-![image](https://hackmd.io/_uploads/rkSQOPY6A.png)
+![image](/images/iron2024/day12_image4.png)
 
 可以看到一個是直接呼叫 `puts`，而另一個是呼叫 `puts@plt`。
 簡單來說，static linking 的檔案比較大，因為會將所有使用到的外部函式，例如 `scanf`、`printf` 等都編譯進去。而 dynamic linking 則是當程式需要呼叫外部函式時，會從外部的函式庫（如 Windows 的 .dll 或 Linux 的 .so）進行調用。例如，這個程式呼叫的就是 `libc.so`。前面提到的 plt 和 got 也是因此而產生的。
@@ -70,7 +70,7 @@ ROP gadgets 是片段可以執行的程式，通常結尾會是 ret 或是 jmp \
 
 假設我們有一個 gadget 是 `pop rax ; ret`並且後面接 `0x3b`， stack 會是以下這樣
 
-![image](https://hackmd.io/_uploads/H1Y7Vjtp0.png)
+![image](/images/iron2024/day12_image5.png)
 
 此時執行 `pop rax` 到 `ret` 就可以成功地將 `rax` 修改為 `0x3b`，並可以繼續執行下一個 gadget。
 
@@ -136,11 +136,11 @@ gcc src/rop.c -o ./rop/share/rop -fno-stack-protector -no-pie -static
 
 以下這個區塊是可寫的區域：
 
-![image](https://hackmd.io/_uploads/SygmKpYTR.png)
+![image](/images/iron2024/day12_image6.png)
 
 接下來使用 `x/10gx <address>` 查找未被使用的地址，並將字串寫入該位置。
 
-![image](https://hackmd.io/_uploads/SyAtt6KTC.png)
+![image](/images/iron2024/day12_image7.png)
 
 最後將 `rdi` 指向該地址即可。
 
@@ -179,10 +179,10 @@ r.interactive()
 
 solve！！
 
-![image](https://hackmd.io/_uploads/By3c9TY6R.png)
+![image](/images/iron2024/day12_image8.png)
 
 ## Bonus
 
 有些人或許會覺得 gadgets 要一個一個找會很麻煩，所以這邊介紹一個直接生成 ROP chain 的方式就是直接使用 `ROPgadget --binary <file> --ropchain`，這樣就會生成出可以直接開 shell 的 ROP chain，不過有時候會有很雜亂的 ROP chain，甚至會導致 payload 太長，所以超過可以 buffer overflow 的長度，就像是以下情況
 
-![image](https://hackmd.io/_uploads/B1ok3aYpR.png)
+![image](/images/iron2024/day12_image9.png)

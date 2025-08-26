@@ -34,7 +34,7 @@ TocOpen: false
 seccomp-tools dump ./[binary]
 ```
 
-![image](https://hackmd.io/_uploads/S1ithRcCC.png)
+![image](/images/iron2024/day19_image1.png)
 
 ## Lab
 
@@ -99,7 +99,7 @@ gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 
 可以發現程式將 `shellcode` 陣列的位置修改為可讀、可寫、可執行，並且在程式中允許使用者輸入 shellcode。程式中最關鍵的是 `gets` 的 buffer overflow 且沒有開啟 PIE 與 Canary，這讓我們能夠控制 return address。再者，程式使用了 `Seccomp` 規則，只允許 `open`、`read`、`write` 這三個 syscall，因此我們無法使用 `execve` 獲取 shell。此時我們可以透過 `seccomp-tools` 來確認。
 
-![image](https://hackmd.io/_uploads/H1uVNJsCA.png)
+![image](/images/iron2024/day19_image2.png)
 
 換個角度思考，我們獲取 shell 的目的是為了拿到 flag。程式允許我們開啟檔案、讀取檔案並輸出內容，因此如果知道 flag 的位置，我們可以直接開檔讀取並輸出，如此即可拿到 flag。接下來我們需要確認幾件事：
 
@@ -109,7 +109,7 @@ gcc src/orw.c -o ./orw/share/orw -fno-stack-protector -no-pie
 
 首先，讓我們查看提供的檔案目錄：
 
-![image](https://hackmd.io/_uploads/SyJFyyoAR.png)
+![image](/images/iron2024/day19_image3.png)
 
 從 `Dockerfile` 開始分析，會發現 Docker 創建了 `ubuntu:22.04` 的容器，並且設定了與網路服務相關的 `xinetd`。從目錄結構可以推測 flag 位於 `/home/orw/flag`。
 
@@ -151,11 +151,11 @@ shellcode += asm(shellcraft.write(1, 'rsp', 0x100))
 
 最後，我們需要確認溢出的 padding 和跳轉的地址。可以使用 `nm` 確定 shellcode 的地址。
 
-![image](https://hackmd.io/_uploads/BysY71i0C.png)
+![image](/images/iron2024/day19_image4.png)
 
 使用 `objdump` 可以發現輸入從 `rbp-0x20` 開始，因此我們需要填充 0x20+0x8 的資料，然後跳轉到 shellcode。
 
-![image](https://hackmd.io/_uploads/Bya2XJjAA.png)
+![image](/images/iron2024/day19_image5.png)
 
 完整 exploit：
 
@@ -181,4 +181,4 @@ r.interactive()
 
 solved!!!
 
-![image](https://hackmd.io/_uploads/Bk8T4yoR0.png)
+![image](/images/iron2024/day19_image6.png)
