@@ -52,7 +52,7 @@ TocOpen: false
 第一天的課程主要是講解資安事件調查、處理的流程與方式，並且透過實際案例分析，讓學員能夠更深入了解在資安事件發生時，應該如何進行調查與取證，並且學習到一些常用的工具與技巧，而有實作到的包含 Linux Server 事件調查、IIS Web Server 事件調查、Windows DC Server 事件調查等，而雖然到現在還是沒有到很熟悉這些流程，因為我覺得包含不少經驗的累積，像是要怎麼去找 root cause、怎麼去分析 log、怎麼去還原事件流程等，但至少有個基本的概念，知道要怎麼去做這些事情。
 
 關於第一天午餐(樂福健康餐盒：去骨烤雞腿)
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image1.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image1.jpg)
 
 ### Day 2：漏洞挖掘的深入體驗
 
@@ -67,14 +67,14 @@ TocOpen: false
 下午場則是講述若是無法直接取得韌體、或是韌體無法順利被拆解(有加密之類的)，那麼就需要透過分析的方式，像是分析前後版本是否有解密函式、或是網路上有無解密工具等，或是直接透過購買時體設備分析，而這邊會是以講師有裝置並且先把檔案從裝置上拉下分析為起始點，而這堂課的目標是解開某一塊被加密過的磁區，而整體過程中也包含直接 xxd 分析、magic number 分析、bootloader 分析等，最後經過大量分析後變成修改開源的解壓縮工具原始碼再重新編譯起來並且解開該磁區，這邊也讓我感覺印象深刻，因為過程中真的會需要大量的經驗累積，像是要怎麼去找 magic number、怎麼去分析 bootloader、怎麼去找解密函式等，這些都是需要經驗的累積才能夠更有效率的進行分析，雖然過去有做過簡單的韌體分析，但這次的課程讓我感覺到自己還有很多需要學習的地方。
 
 關於第二天午餐(一日樂食：嫩煎里肌牛)
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image2.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image2.jpg)
 
 ### Day 3：與系統底層一日邂逅
 
 基本上是以前測作業實作為主軸，包含 loader、rootkit、Hack Chrome、Kernel 實作 keylogger、隱藏檔案等，而課程就帶著我們一步一步去實作這些東西，並且講解一些相關的概念，像是什麼是 rootkit、hook 的方式有哪些、如何繞過 hook、Windows kernel driver 的開發等等，後續也有去寫一些 rule 去嘗試偵測檔案，像是 YARA、Sigma 等等，整體來說這一天的課程內容也非常豐富，雖然有些東西還是沒有很熟悉，但至少對於 Windows api、kernel driver 有更進一步的了解，並且對於 kernel driver 的開發也有一些概念，若是對於這方面有興趣的話，這堂課會是個不錯的入門，可以到成大資安社的頻道觀看相關的教學影片(連結在前面有提到)。
 
 關於第三天午餐(女王飯捲：牛肉紫菜)
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image3.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image3.jpg)
 
 ### Day 4：初探威脅情資的奧秘
 
@@ -87,16 +87,16 @@ TocOpen: false
 
 關於專題發表基本上是三個人一組，但我們這組基本上只有兩個人在研究而已，說實話其實感覺沒有參與專題的話理論上不應該拿到最後證書的，但尊重發放規則，而我們這組就是去研究一個已經 EOL(End of Life) 的 router，裝置是 D-Link DIR 850L，而我們的目標就是要去分析這個裝置，幸運的是這次不用模擬，有實機可以分析，雖然後面也發生了一些神奇狀況，但就不多說，總之就是去嘗試挖掘這個設備的漏洞，過程中也包含了韌體的拆解、漏洞分析、PoC 撰寫等，而雖然遇到不少困難，但最後還是順利完成了專題發表，在這邊感謝組員 [Flydragon](https://flydragonw.github.io/about/)，[簡報連結](https://fengchia-my.sharepoint.com/:p:/g/personal/d1109070_o365_fcu_edu_tw/ET3B0ELULbFFs3QfBGob0NYBw42IGEH68Ja6uDnFWCjG0A?e=qwHedu)
 
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image4.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image4.jpg)
 
 關於專題發表午餐(熱量炸彈：披薩、炸雞)
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image5.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image5.jpg)
 
 點心(雞蛋糕)
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image6.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image6.jpg)
 
 飲料(再睡五分鐘：黑糖珍珠好濃鮮奶)
-![image](/images/teamT5-security-camp2025/teamt5-security-camp2025_image7.jpg)
+![image](/images/teamt5-security-camp2025/teamt5-security-camp2025_image7.jpg)
 
 ## 心得
 
