@@ -1,4 +1,15 @@
-{{/* 擴展 head 區塊，添加自訂 CSS */}}
+{{/* 擴展 head 區塊,添加自訂 CSS */}}
+
+{{/* Google Analytics */}}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HCFFHNRVEY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HCFFHNRVEY');
+</script>
 
 {{/* 字體與排版優化 CSS */}}
 {{ $typographyCSS := resources.Get "css/extended/typography-optimization.css" }}
