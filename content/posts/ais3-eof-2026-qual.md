@@ -1229,7 +1229,7 @@ flag: `EOF{just_some_small_bruteforce_after_LLL}`
             - 該向量的第 4 個分量即為候選私鑰 `sk`   
     - 解密 Flag   
         Flag 使用 AES-CTR 加密，金鑰由私鑰低 128 bits 推導：   
-        ```
+        ```markdown
         key = (sk & ((1 << 128) - 1)).to_bytes(16)
         ```
         對每個候選 `sk`：   
@@ -1342,7 +1342,7 @@ flag: `EOF{once_a_wise_dog_said_:_hi_._but_he_didn't_know_why_:D}`
 這個 service 提供三個功能   
 1. wowoof   
     - 取得一張「ticket」，其內容會洩漏   
-        ```
+        ```markdown
         getrandbits(134) ^ getrandbits(134)
         ```
 2. wowooF   
@@ -1351,24 +1351,24 @@ flag: `EOF{once_a_wise_dog_said_:_hi_._but_he_didn't_know_why_:D}`
 3. wowoOf   
     - 驗證一組訊息與簽章   
     - 若簽章有效，且訊息中包含字串   
-        ```
+        ```markdown
         i_am_the_king_of_the_dog
         ```
         即可取得 flag   
    
 另外，實際被簽章的雜湊值為：   
-```
+```markdown
 z = sha256(salt + message)
 ```
 其中 `salt` 是 64 bytes 的隨機值，且對使用者未知。   
 - 漏洞分析（Vulnerabilities）   
     - MT19937 狀態洩漏（State Leak）   
         `wowoof` 功能會輸出：   
-        ```
+        ```markdown
         WooFf wOOF {leak}'f 🐕!
         ```
         其中：   
-        ```
+        ```markdown
         leak = getrandbits(134) ^ getrandbits(134)
         ```
         分析要點：   
@@ -1382,7 +1382,7 @@ z = sha256(salt + message)
         - 每個 leak 提供一組線性方程式   
 - ECDSA Nonce 可預測（Nonce Prediction）   
     伺服器使用：   
-    ```
+    ```markdown
     getrandbits(255)
     ```
     來生成 ECDSA nonce `k`。   
@@ -1421,11 +1421,11 @@ z = sha256(salt + message)
     成功還原 ECDSA 私鑰 `d`，即可偽造任意簽章。   
 - Hash Length Extension Attack（LEA）   
     驗證條件要求訊息中必須包含：   
-    ```
+    ```markdown
     i_am_the_king_of_the_dog
     ```
     而雜湊計算方式為：   
-    ```
+    ```markdown
     z = sha256(salt + message)
     ```
     問題在於：   
@@ -1436,7 +1436,7 @@ z = sha256(salt + message)
         - `len(m)`   
    
     就可以計算：   
-    ```
+    ```markdown
     hash(m || padding || suffix)
     ```
     而不需要知道 `m` 本身。   
@@ -1445,12 +1445,12 @@ z = sha256(salt + message)
 1. MT19937 狀態還原   
     - 與伺服器互動，蒐集 200 筆 leak   
     - 每一筆 leak：   
-        ```
+        ```markdown
         L = V1 ^ V2
         ```
         其中 $V_1, V_2$ 為 134-bit 的 MT 輸出   
     - 對 `L` 進行 untemper，得到：   
-        ```
+        ```markdown
         MT[i] ^ MT[i+5]
         ```
     - 建立 GF(2) 上的線性方程組：   
@@ -1871,7 +1871,7 @@ $$
     )
     $$
     結果：   
-    ```
+    ```markdown
     g = 1
     ```
  --- 
@@ -2168,7 +2168,7 @@ flag: `EOF{ExP3d14i0N_33_15_4he_G0AT}`
 
 題目給了兩個檔案 firmware.bin、signal.vcd，原則上是要做UART 訊號分析解析 VCD 檔以還原 UART 輸出並理解加密流程找出 flag   
 那 VCD 檔案記錄了 UART 資料線隨時間變化的狀態：   
-```
+```markdown
 #0
 1d          # 訊號為高（idle）
 #833328
@@ -2190,7 +2190,7 @@ UART Frame 結構
    
 Decode 流程   
 在每個 start bit 之後，於每個 bit 期間的中心點取樣（1.5、2.5、3.5… 個 bit 週期）：   
-```
+```markdown
 for each falling edge (start bit):
     for bit_idx in range(8):
         sample_time = start_time + (1.5 + bit_idx) * bit_period
@@ -2225,7 +2225,7 @@ def encrypt(input_data, key_data):
     return bytes(output)
 ```
 Key data 儲存在韌體位移 `0x394`：   
-```
+```markdown
 a2 c3 9e cc 60 35 ee bf f5 7d 78 5a cd d5 c8 52
 80 ae c6 19 56 f2 a7 cb d5 0b e1 61 b9 14
 ```
