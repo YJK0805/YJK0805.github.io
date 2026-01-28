@@ -360,7 +360,6 @@ def index(request):
     - 會過濾： `"`、 `'`、 `<`、 `>`、 `&`   
 2. Payload 長度限制為 210 字元   
 3. DEBUG 模式關閉   
-    - `{% debug %}` 無法使用   
 4. 底線（underscore）限制   
     - Django template 會阻擋存取以 `_` 開頭的屬性   
    
