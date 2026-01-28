@@ -149,6 +149,19 @@ noClasses = true
 noHl = false
 tabWidth = 4
 
+# Goldmark renderer 設定
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+# 數學公式渲染設定（支援 LaTeX）
+[markup.goldmark.extensions.passthrough]
+enable = true
+
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [['\[', '\]'], ['$$', '$$']]
+inline = [['\(', '\)'], ['$', '$']]
+
 [outputs]
 home = ["HTML", "RSS", "JSON"]
 page = ["HTML"]
