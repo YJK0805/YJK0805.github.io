@@ -18,20 +18,17 @@ TocOpen: false
 
 | 競賽名稱 | 年份 | 成績 |
 |---------|------|------|
-| **AEGIS 神盾盃資安競賽** | 2025 | 6th(初賽)/9th(決賽) |
-| **AIS3 Pre-exam** | 2025 | 33rd |
+| **AIS3 EOF CTF** | 2026 | 7th (Qual) / 未知 (Final) |
+| **AEGIS 神盾盃資安競賽** | 2025 | 6th (Qual) / 9th (Final) |
+| **AIS3 Pre-exam** | 2025/2024 | 33rd / 54th |
 | **MyFirstCTF** | 2024 | 銅質獎 |
-| **AIS3 Pre-exam** | 2024 | 54th |
-| **T 貓盃資安基礎實務能力競賽** (大專院校組) | 2023 | 佳作 |
-| **T 貓盃資安基礎實務能力競賽** (高中職組) | 2022 | 佳作 |
+| **T 貓盃資安基礎實務能力競賽** (大專院校組) | 2023/2022 | 佳作 |
 
 ### 程式設計競賽
 
 | 競賽名稱 | 年份 | 成績 |
 |---------|------|------|
-| **PUPC** | 2025 | 銅牌獎 |
-| **PUPC** | 2024 | 銀牌獎 |
-| **PUPC** | 2023 | 銀牌獎 |
+| **PUPC** | 2025/2024/2023 | 銅牌獎/銀牌獎/銀牌獎 |
 | **ICPC 桃園站** | 2023 | High Honors |
 
 ---
@@ -50,14 +47,14 @@ TocOpen: false
 **HITCON**
 - **場務組志工** (2024)
 - **逢甲大學黑客社擺攤** (2023)
-- **會眾** (2022)
+- **會眾** (2025/2022)
 
 **iThome 鐵人賽**
 - [**PWN CTF 超入門筆記**](https://ithelp.ithome.com.tw/users/20163008/ironman/7563) (2024)
 - [**從競賽程式學習資料結構與演算法**](https://ithelp.ithome.com.tw/users/20163008/ironman/6687) (2023)
 
 **DEVCORE CONFERENCE**
-- **會眾** (2025)
+- **會眾** (2026/2025)
 
 ### 課程培訓
 
@@ -74,23 +71,32 @@ TocOpen: false
 - **助教** (2024、2025)
 
 **TeamT5 Camp**
-- **學員** (2025)
+- **學員** (2026/2025)
 - 學習 IoT 韌體安全、資安事件處理、漏洞挖掘、系統底層、威脅情資等
 
 **AIS3 南區 Club**
 - **學員** (2021)
 - 學習資安概論、Web Security、數位鑑識
 
-
 ---
 
 ## 工作經驗
+
+**ZUSO Generation 如梭世代** - Security Researcher  實習生
+- 進行漏洞挖掘、漏洞分析、PoC 撰寫、學習 Windows Exploitation 等
 
 **逢甲大學資通安全研究中心** - 實習生
 - 協助進行網站、網路滲透測試業務與 App 安全檢測
 
 **行政院網路攻防演練** - 攻擊手 (2025)
 - 參與攻防演練，實際針對網站標的進行滲透測試
+
+---
+
+## CVE
+
+- [CVE-2026-3452](https://www.cve.org/CVERecord?id=CVE-2026-3452) - Concrete CMS
+- [CVE-2026-31883](https://www.cve.org/CVERecord?id=CVE-2026-31883)、[CVE-2026-31884](https://www.cve.org/CVERecord?id=CVE-2026-31884)、[CVE-2026-31885](https://www.cve.org/CVERecord?id=CVE-2026-31885) - FreeRDP
 
 ---
 
@@ -113,4 +119,4 @@ TocOpen: false
 
 ---
 
-*Last updated: 2025-12-01*
+*Last updated: 2026-03-17*
