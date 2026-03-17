@@ -271,7 +271,7 @@ llvm-objdump-18 -d xdp_prog.o | grep "a7 04 00 00" | awk '{print $6}'
 
 可以拿到以下的 key  
 
-```
+```markdown
 af f4 84 2d 04 9a 39 0f 2b c0 1d 78 d9 b7 0a 7d
 0b a5 ba 11 b9 96 bb aa e6 75 e1 ab 68 8f 46 58
 1c 66 0e 42 56 ec 87 5c c5 7f 53 2d 1d 33 ac d8
@@ -280,7 +280,7 @@ af f4 84 2d 04 9a 39 0f 2b c0 1d 78 d9 b7 0a 7d
 
 `flag.enc` 存了 hex 後 XOR 的 flag  
 
-```
+```markdown
 eabbc25677f3084458f0531f86863f226c95d555e6c28bd7
 ```
 
