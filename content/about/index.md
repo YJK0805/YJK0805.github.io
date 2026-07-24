@@ -8,7 +8,7 @@ TocOpen: false
 
 ## Introduction
 
-我是 **YJK**，熱衷於學習各種資訊技術的資安研究者。過去主要參加程式設計競賽，近幾年專注於資訊安全領域。在 CTF 競賽中主要研究逆向工程與 Binary Exploitation，CTF 之餘也研究 IoT firmware security 與漏洞相關知識並嘗試重現漏洞。此外，也有豐富的社團授課與競賽經歷，未來計畫實際挖掘真實世界的漏洞。
+我是 **YJK**，熱衷於學習各種資訊技術的資安研究者。過去主要參加程式設計競賽，近幾年專注於資訊安全領域。在 CTF 競賽中主要研究逆向工程與 Binary Exploitation，CTF 之餘也研究 IoT firmware security、Windows Exploitation 與各種漏洞相關知識並嘗試重現漏洞。此外，也有豐富的社團授課與競賽經歷。
 
 ---
 
@@ -45,9 +45,9 @@ TocOpen: false
 ### 社群活動
 
 **HITCON**
+- **會眾** (2025/2022)
 - **場務組志工** (2024)
 - **逢甲大學黑客社擺攤** (2023)
-- **會眾** (2025/2022)
 
 **iThome 鐵人賽**
 - [**PWN CTF 超入門筆記**](https://ithelp.ithome.com.tw/users/20163008/ironman/7563) (2024)
@@ -68,7 +68,7 @@ TocOpen: false
 - 進階資安攻防競技組 (CTF) 學員：參與 PWN、Reverse、Web 等 CTF 組課程及部分軟體安全組課程，並設計最終專題題目
 
 **AIS3 Junior**
-- **助教** (2024、2025)
+- **助教** (2026/2025/2024)
 
 **TeamT5 Camp**
 - **學員** (2026/2025)
@@ -82,21 +82,22 @@ TocOpen: false
 
 ## 工作經驗
 
-**ZUSO Generation 如梭世代** - Security Researcher  實習生
+**ZUSO Generation 如梭世代** - Security Researcher  實習生 (2026/01-Now)
 - 進行漏洞挖掘、漏洞分析、PoC 撰寫、學習 Windows Exploitation 等
 
-**逢甲大學資通安全研究中心** - 實習生
+**逢甲大學資通安全研究中心** - 實習生 (2024/05-2026/01)
 - 協助進行網站、網路滲透測試業務與 App 安全檢測
 
 **行政院網路攻防演練** - 攻擊手 (2025)
 - 參與攻防演練，實際針對網站標的進行滲透測試
+- 發現 1 個重大衝擊性和 23 個低衝擊性弱點/第2名
 
 ---
 
 ## CVE
 
 - [CVE-2026-3452](https://www.cve.org/CVERecord?id=CVE-2026-3452) - Concrete CMS
-- [CVE-2026-31883](https://www.cve.org/CVERecord?id=CVE-2026-31883)、[CVE-2026-31884](https://www.cve.org/CVERecord?id=CVE-2026-31884)、[CVE-2026-31885](https://www.cve.org/CVERecord?id=CVE-2026-31885) - FreeRDP
+- [CVE-2026-24251](https://www.cve.org/CVERecord?id=CVE-2026-24251) - NVIDIA Megatron Bridge
 
 ---
 
@@ -113,7 +114,7 @@ TocOpen: false
 
 - **個人網站**: [YJK.tw](https://yjk.tw)
 - **GitHub**: [YJK0805](https://github.com/YJK0805)
-- **Email**: jerryko103@gmail.com
+- **Email**: hi@yjk.tw
 - **X (Twitter)**: [@YJK0805](https://x.com/YJK0805)
 - **LinkedIn**: [YJK](https://www.linkedin.com/in/yun-chieh-ko-934216242)
 
