@@ -96,7 +96,7 @@ TocOpen: false
 ## CVE
 
 - [CVE-2026-3452](https://www.cve.org/CVERecord?id=CVE-2026-3452) - Concrete CMS Deserialization Remote Code Execution
-- [CVE-2026-24251](https://www.cve.org/CVERecord?id=CVE-2026-24251) - NVIDIA Megatron Bridge Code Injection
+- [CVE-2026-24251](https://www.cve.org/CVERecord?id=CVE-2026-24251)、[CVE-2026-24250](https://www.cve.org/CVERecord?id=CVE-2026-24250) - NVIDIA Megatron Bridge Code Injection
 - [CVE-2026-69474](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69474) - Windows Overlay Filter Information Disclosure
 
 ---
