@@ -110,6 +110,12 @@ TocOpen: false
 
 ---
 
+## Others
+
+- 2025 DEVCORE 全國資訊安全獎學金 
+
+---
+
 ## 聯絡方式
 
 - **個人網站**: [YJK.tw](https://yjk.tw)
@@ -120,4 +126,4 @@ TocOpen: false
 
 ---
 
-*Last updated: 2026-09-09*
+*Last updated: 2026-11-20*
